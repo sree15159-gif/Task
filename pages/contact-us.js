@@ -1,11 +1,10 @@
 import Link from 'next/link';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import { Html, Head, Main, NextScript } from 'next/document';
 
 const ContactUs = () => {
   return (
     <>
-      <Header />
+  
       
       <main className="wrapper sb-default">
         {/* Sidebar */}
@@ -100,7 +99,6 @@ const ContactUs = () => {
         </div>
       </main>
       
-      <Footer />
     </>
   );
 };
