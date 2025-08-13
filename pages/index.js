@@ -1,19 +1,176 @@
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { useState, useEffect } from 'react';
 
 export default function Home() {
+  // State for managing hero image changes on category hover
+  const [heroImage, setHeroImage] = useState('/assets/img/hero/1.jpg');
+  const [isClient, setIsClient] = useState(false);
+
+  // Ensure client-side rendering consistency
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  // Initialize Owl Carousel for categories auto-scroll and hero categories auto-scroll
+  useEffect(() => {
+    if (isClient && typeof window !== 'undefined' && window.$) {
+      // Initialize category carousel with auto-scroll
+      const categoryCarousel = window.$('.mn-cat.owl-carousel');
+      if (categoryCarousel.length) {
+        categoryCarousel.owlCarousel({
+          loop: true,
+          margin: 20,
+          nav: false,
+          dots: false,
+          autoplay: true,
+          autoplayTimeout: 3000,
+          autoplayHoverPause: true,
+          responsive: {
+            0: {
+              items: 1
+            },
+            600: {
+              items: 2
+            },
+            1000: {
+              items: 3
+            },
+            1200: {
+              items: 4
+            }
+          }
+        });
+      }
+
+      // Initialize product carousel if exists
+      const productCarousel = window.$('.mn-product.owl-carousel');
+      if (productCarousel.length) {
+        productCarousel.owlCarousel({
+          loop: true,
+          margin: 20,
+          nav: false,
+          dots: false,
+          autoplay: true,
+          autoplayTimeout: 4000,
+          autoplayHoverPause: true,
+          responsive: {
+            0: {
+              items: 1
+            },
+            600: {
+              items: 2
+            },
+            1000: {
+              items: 3
+            },
+            1200: {
+              items: 4
+            }
+          }
+        });
+      }
+
+      // Auto-scroll for hero categories
+      const categoriesContainer = document.querySelector('.categories-scroll-container');
+      if (categoriesContainer) {
+        let scrollAmount = 0;
+        const scrollStep = 1;
+        const scrollDelay = 30;
+        let scrollDirection = 1;
+        let isHovered = false;
+
+        const autoScroll = () => {
+          if (!isHovered && categoriesContainer) {
+            scrollAmount += scrollStep * scrollDirection;
+            categoriesContainer.scrollLeft = scrollAmount;
+            
+            // Change direction when reaching ends
+            if (scrollAmount >= categoriesContainer.scrollWidth - categoriesContainer.clientWidth) {
+              scrollDirection = -1;
+            } else if (scrollAmount <= 0) {
+              scrollDirection = 1;
+            }
+          }
+        };
+
+        const scrollInterval = setInterval(autoScroll, scrollDelay);
+
+        // Pause on hover
+        categoriesContainer.addEventListener('mouseenter', () => {
+          isHovered = true;
+        });
+
+        categoriesContainer.addEventListener('mouseleave', () => {
+          isHovered = false;
+        });
+
+        // Cleanup
+        return () => {
+          clearInterval(scrollInterval);
+        };
+      }
+    }
+  }, [isClient]);
+
+  // Category data with corresponding hero images
+  const categories = [
+    {
+      id: 'food',
+      name: 'Food',
+      icon: '🍽️',
+      items: '450 items',
+      heroImage: '/assets/img/hero/1.jpg',
+      bgColor: 'bg-orange-100'
+    },
+    {
+      id: 'groceries',
+      name: 'Groceries',
+      icon: '🛒',
+      items: '320 items',
+      heroImage: '/assets/img/hero/2.jpg',
+      bgColor: 'bg-green-100'
+    },
+    {
+      id: 'medicine',
+      name: 'Medicine',
+      icon: '💊',
+      items: '180 items',
+      heroImage: '/assets/img/hero/3.jpg',
+      bgColor: 'bg-blue-100'
+    },
+    {
+      id: 'home-services',
+      name: 'Services',
+      icon: '🏠',
+      items: '95 items',
+      heroImage: '/assets/img/hero/4.jpg',
+      bgColor: 'bg-purple-100'
+    },
+    {
+      id: 'shop',
+      name: 'Shop',
+      icon: '🛍️',
+      items: '275 items',
+      heroImage: '/assets/img/hero/1.jpg',
+      bgColor: 'bg-pink-100'
+    }
+  ];
+
   return (
     <>
       <Header />
 
       <main className="wrapper sb-default">
-        {/* Loader */}
-        <div id="mn-overlay">
-          <div className="loader">
-            <img src="/assets/img/logo/logo-I.png" alt="loader" />
-            <span className="shape"></span>
+        {/* Loader - Only render on client side to prevent hydration issues */}
+        {isClient && (
+          <div id="mn-overlay">
+            <div className="loader">
+              <img src="/assets/img/logo/logo-I.png" alt="loader" />
+              <span className="shape"></span>
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Sidebar */}
         <div className="mn-sidebar-overlay"></div>
@@ -21,17 +178,17 @@ export default function Home() {
           <div className="mn-sidebar-body">
             <button type="button" className="side-close" title="Close"></button>
             <ul className="mn-sb-list">
-              <li className="mn-sb-title condense"><span>Fashion</span></li>
+              <li className="mn-sb-title condense"><span>Food</span></li>
               <li className="mn-sb-item sb-drop-item">
                 <a href="#" className="mn-drop-toggle">
                   <img src="/assets/img/icons/clothes-2.svg" alt="clothes" />
                   <span className="condense">
-                    Clothes<i className="drop-arrow ri-arrow-down-s-line"></i>
+                    Restaurant Food<i className="drop-arrow ri-arrow-down-s-line"></i>
                   </span>
                 </a>
                 <ul className="mn-sb-drop">
                   <li className="list">
-                    <a href="#" className="mn-page-link drop">T-shirts</a>
+                    <a href="#" className="mn-page-link drop">Pizza</a>
                   </li>
                   <li className="list">
 								<a href="shop-right-sidebar.html" className="mn-page-link drop">Shirts</a>
@@ -128,7 +285,7 @@ export default function Home() {
 							</li>
 						</ul>
 					</li>
-					<li className="mn-sb-title condense"><span>Bakery</span></li>
+					<li className="mn-sb-title condense"><span>Groceries</span></li>
 					<li className="mn-sb-item sb-drop-item">
 						<a href="#" onClick={(e) => e.preventDefault()} className="mn-drop-toggle">
 							<img src="assets/img/icons/cake.svg" alt="Cake"/>
@@ -152,7 +309,7 @@ export default function Home() {
 							<span className="condense">Bread</span>
 						</a>
 					</li>
-					<li className="mn-sb-title condense"><span>Vegetables</span></li>
+					<li className="mn-sb-title condense"><span>Medicine</span></li>
 					<li className="mn-sb-item sb-drop-item">
 						<a href="#" onClick={(e) => e.preventDefault()} className="mn-drop-toggle">
 							<img src="assets/img/icons/tuber.svg" alt="tuber"/>
@@ -182,7 +339,7 @@ export default function Home() {
 							<span className="condense">Lemon</span>
 						</a>
 					</li>
-					<li className="mn-sb-title condense"><span>Fruits</span></li>
+					<li className="mn-sb-title condense"><span>Home Services</span></li>
 					<li className="mn-sb-item sb-drop-item">
 						<a href="shop-right-sidebar.html" className="mn-drop-toggle">
 							<img src="assets/img/icons/avocado.svg" alt="avocado"/>
@@ -216,7 +373,8 @@ export default function Home() {
 	<div className="mn-main-content">
 			<div className="row">
 				<div className="col-xxl-12">
-					{/* Hero Section */}
+					{/* OLD HERO SECTION - COMMENTED OUT */}
+					{/* 
 					<section className="mn-hero swiper-container m-b-15">
 						<div className="mn-hero-slider owl-carousel">
 							<div className="mn-hero-slide swiper-slide slide-1">
@@ -253,97 +411,165 @@ export default function Home() {
 							</div>
 						</div>
 					</section>
+					*/}
+
+					{/* NEW GROCERY HERO SECTION */}
+					<section className="mn-grocery-hero m-b-12">
+						<div className="grocery-hero-container">
+							{/* Main Hero Content */}
+							<div className="hero-main-content">
+								{/* Left Side - Hero Image */}
+								<div className="hero-image-section">
+									<div className="hero-image-wrapper">
+										<img 
+											src={heroImage} 
+											alt="Grocery Shopping" 
+											className="hero-main-image"
+										/>
+										{/* Discount Badge */}
+										<div className="discount-badge">
+											<span>50% Off</span>
+										</div>
+									</div>
+								</div>
+
+								{/* Right Side - Text Content AND Categories */}
+								<div className="hero-right-section">
+									{/* Text Content */}
+									<div className="hero-text-section">
+										<div className="hero-text-content">
+											<h1 className="hero-title">
+												Discover
+												<br />
+												<span className="hero-title-highlight">Everything</span>
+											</h1>
+											<p className="hero-subtitle">
+												Food, Groceries, Medicine, Home Services & Shopping - 
+												All in one place with quality and convenience.
+											</p>
+											<button className="hero-cta-btn">
+												<span>Explore Now</span>
+												<i className="ri-arrow-right-line"></i>
+											</button>
+										</div>
+									</div>
+
+									{/* Categories Scroll - Now on Right Side */}
+									<div className="hero-categories-section">
+										<div className="mn-cat owl-carousel">
+											{categories.map((category) => (
+												<div 
+													key={category.id}
+													className={`category-card ${category.bgColor}`}
+													onMouseEnter={isClient ? () => setHeroImage(category.heroImage) : undefined}
+													onMouseLeave={isClient ? () => setHeroImage('/assets/img/hero/1.jpg') : undefined}
+												>
+													<div className="category-icon">
+														<span>{category.icon}</span>
+													</div>
+													<div className="category-info">
+														<h4 className="category-name">{category.name}</h4>
+														<p className="category-items">{category.items}</p>
+													</div>
+												</div>
+											))}
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</section>
 
 					{/* <!-- Category Section --> */}
 					<section className="mn-category p-tb-15">
 						<div className="mn-cat owl-carousel">
 							<div className="mn-cat-card cat-card-1">
-								<p className="lbl"><span>35%</span></p>
-								<span className="bg">35%</span>
-								<h4>Fashion</h4>
-								<h3>Clothes</h3>
-								<p>Items (16)</p>
+								<p className="lbl"><span>40%</span></p>
+								<span className="bg">40%</span>
+								<h4>Fresh</h4>
+								<h3>Food</h3>
+								<p>Items (450)</p>
 								<ul>
-									<li><a href="shop-right-sidebar.html"><img src="assets/img/category/1.jpg"
+									<li><a href="#" onClick={(e) => e.preventDefault()}><img src="/assets/img/category/1.jpg"
 												alt="category"/></a></li>
-									<li><a href="shop-right-sidebar.html"><img src="assets/img/category/2.jpg"
+									<li><a href="#" onClick={(e) => e.preventDefault()}><img src="/assets/img/category/2.jpg"
 												alt="category"/></a></li>
-									<li><a href="shop-right-sidebar.html"><img src="assets/img/category/3.jpg"
+									<li><a href="#" onClick={(e) => e.preventDefault()}><img src="/assets/img/category/3.jpg"
 												alt="category"/></a></li>
 								</ul>
 							</div>
 							<div className="mn-cat-card cat-card-2">
-								<p className="lbl"><span>22%</span></p>
-								<span className="bg">22%</span>
-								<h4>Generic</h4>
-								<h3>Cosmetics</h3>
-								<p>Items (45)</p>
+								<p className="lbl"><span>30%</span></p>
+								<span className="bg">30%</span>
+								<h4>Daily</h4>
+								<h3>Groceries</h3>
+								<p>Items (320)</p>
 								<ul>
-									<li><a href="shop-right-sidebar.html"><img src="assets/img/category/4.jpg"
+									<li><a href="#" onClick={(e) => e.preventDefault()}><img src="/assets/img/category/4.jpg"
 												alt="category"/></a></li>
-									<li><a href="shop-right-sidebar.html"><img src="assets/img/category/5.jpg"
+									<li><a href="#" onClick={(e) => e.preventDefault()}><img src="/assets/img/category/5.jpg"
 												alt="category"/></a></li>
-									<li><a href="shop-right-sidebar.html"><img src="assets/img/category/6.jpg"
+									<li><a href="#" onClick={(e) => e.preventDefault()}><img src="/assets/img/category/6.jpg"
 												alt="category"/></a></li>
 								</ul>
 							</div>
 							<div className="mn-cat-card cat-card-3">
-								<p className="lbl"><span>65%</span></p>
-								<span className="bg">65%</span>
-								<h4>Stylish</h4>
-								<h3>Shoes</h3>
-								<p>Items (58)</p>
+								<p className="lbl"><span>25%</span></p>
+								<span className="bg">25%</span>
+								<h4>Health</h4>
+								<h3>Medicine</h3>
+								<p>Items (180)</p>
 								<ul>
-									<li><a href="shop-right-sidebar.html"><img src="assets/img/category/7.jpg"
+									<li><a href="#" onClick={(e) => e.preventDefault()}><img src="/assets/img/category/7.jpg"
 												alt="category"/></a></li>
-									<li><a href="shop-right-sidebar.html"><img src="assets/img/category/8.jpg"
+									<li><a href="#" onClick={(e) => e.preventDefault()}><img src="/assets/img/category/8.jpg"
 												alt="category"/></a></li>
-									<li><a href="shop-right-sidebar.html"><img src="assets/img/category/9.jpg"
+									<li><a href="#" onClick={(e) => e.preventDefault()}><img src="/assets/img/category/9.jpg"
 												alt="category"/></a></li>
 								</ul>
 							</div>
 							<div className="mn-cat-card cat-card-4">
-								<p className="lbl"><span>45%</span></p>
-								<span className="bg">45%</span>
-								<h4>Digital</h4>
-								<h3>watches</h3>
-								<p>Items (64)</p>
+								<p className="lbl"><span>35%</span></p>
+								<span className="bg">35%</span>
+								<h4>Professional</h4>
+								<h3>Home Services</h3>
+								<p>Items (95)</p>
 								<ul>
-									<li><a href="shop-right-sidebar.html"><img src="assets/img/category/10.jpg"
+									<li><a href="#" onClick={(e) => e.preventDefault()}><img src="/assets/img/category/10.jpg"
 												alt="category"/></a></li>
-									<li><a href="shop-right-sidebar.html"><img src="assets/img/category/11.jpg"
+									<li><a href="#" onClick={(e) => e.preventDefault()}><img src="/assets/img/category/11.jpg"
 												alt="category"/></a></li>
-									<li><a href="shop-right-sidebar.html"><img src="assets/img/category/12.jpg"
+									<li><a href="#" onClick={(e) => e.preventDefault()}><img src="/assets/img/category/12.jpg"
 												alt="category"/></a></li>
 								</ul>
 							</div>
 							<div className="mn-cat-card cat-card-5">
-								<p className="lbl"><span>63%</span></p>
-								<span className="bg">63%</span>
-								<h4>leather</h4>
-								<h3>belts</h3>
-								<p>Items (75)</p>
+								<p className="lbl"><span>50%</span></p>
+								<span className="bg">50%</span>
+								<h4>Online</h4>
+								<h3>Shop</h3>
+								<p>Items (275)</p>
 								<ul>
-									<li><a href="shop-right-sidebar.html"><img src="assets/img/category/13.jpg"
+									<li><a href="#" onClick={(e) => e.preventDefault()}><img src="/assets/img/category/13.jpg"
 												alt="category"/></a></li>
-									<li><a href="shop-right-sidebar.html"><img src="assets/img/category/14.jpg"
+									<li><a href="#" onClick={(e) => e.preventDefault()}><img src="/assets/img/category/14.jpg"
 												alt="category"/></a></li>
-									<li><a href="shop-right-sidebar.html"><img src="assets/img/category/15.jpg"
+									<li><a href="#" onClick={(e) => e.preventDefault()}><img src="/assets/img/category/15.jpg"
 												alt="category"/></a></li>
 								</ul>
 							</div>
 							<div className="mn-cat-card cat-card-6">
 								<p className="lbl"><span>23%</span></p>
 								<span className="bg">23%</span>
-								<h4>Cotton</h4>
-								<h3>Bags</h3>
-								<p>Items (15)</p>
+								<h4>Quality</h4>
+								<h3>Services</h3>
+								<p>Items (150)</p>
 								<ul>
-									<li><a href="shop-right-sidebar.html"><img src="assets/img/category/16.jpg"
+									<li><a href="#" onClick={(e) => e.preventDefault()}><img src="/assets/img/category/16.jpg"
 												alt="category"/></a></li>
-									<li><a href="shop-right-sidebar.html"><img src="assets/img/category/17.jpg"
+									<li><a href="#" onClick={(e) => e.preventDefault()}><img src="/assets/img/category/17.jpg"
 												alt="category"/></a></li>
-									<li><a href="shop-right-sidebar.html"><img src="assets/img/category/18.jpg"
+									<li><a href="#" onClick={(e) => e.preventDefault()}><img src="/assets/img/category/18.jpg"
 												alt="category"/></a></li>
 								</ul>
 							</div>
@@ -415,12 +641,12 @@ export default function Home() {
 														data-src="assets/img/product/7.jpg"
 														data-src-hover="assets/img/product/7.jpg"
 														data-tooltip="Orange"><span
-															style={{"background-color": "#e97e70"}}></span></a></li>
+															style={{"backgroundColor": "#e97e70"}}></span></a></li>
 												<li><a href="#" className="mn-opt-clr-img"
 														data-src="assets/img/product/8.jpg"
 														data-src-hover="assets/img/product/8.jpg"
 														data-tooltip="Orange"><span
-															style={{"background-color": "#70e98a"}}></span></a></li>
+															style={{"backgroundColor": "#70e98a"}}></span></a></li>
 											</ul>
 										</div>
 										<a href="#" onClick={(e) => e.preventDefault()} className="mn-wishlist" data-tooltip title="Wishlist">
@@ -472,12 +698,12 @@ export default function Home() {
 														data-src="assets/img/product/9.jpg"
 														data-src-hover="assets/img/product/9.jpg"
 														data-tooltip="Orange"><span
-															style={{"background-color": "#0e0e0e"}}></span></a></li>
+															style={{"backgroundColor": "#0e0e0e"}}></span></a></li>
 												<li><a href="#" className="mn-opt-clr-img"
 														data-src="assets/img/product/10.jpg"
 														data-src-hover="assets/img/product/10.jpg"
 														data-tooltip="Orange"><span
-															style={{"background-color": "#c54367"}}></span></a></li>
+															style={{"backgroundColor": "#c54367"}}></span></a></li>
 											</ul>
 										</div>
 										<a href="#" onClick={(e) => e.preventDefault()} className="mn-wishlist active" data-tooltip
@@ -533,12 +759,12 @@ export default function Home() {
 														data-src="assets/img/product/1.jpg"
 														data-src-hover="assets/img/product/3.jpg"
 														data-tooltip="Gray"><span
-															style={{"background-color": "#f3f3f3"}}></span></a></li>
+															style={{"backgroundColor": "#f3f3f3"}}></span></a></li>
 												<li><a href="#" className="mn-opt-clr-img"
 														data-src="assets/img/product/2.jpg"
 														data-src-hover="assets/img/product/4.jpg"
 														data-tooltip="Orange"><span
-															style={{"background-color": "#e8c2ff"}}></span></a></li>
+															style={{"backgroundColor": "#e8c2ff"}}></span></a></li>
 											</ul>
 										</div>
 										<a href="#" onClick={(e) => e.preventDefault()} className="mn-wishlist" data-tooltip title="Wishlist">
@@ -589,12 +815,12 @@ export default function Home() {
 														data-src="assets/img/product/11.jpg"
 														data-src-hover="assets/img/product/12.jpg"
 														data-tooltip="Orange"><span
-															style={{"background-color": "#f3f3f3"}}></span></a></li>
+															style={{"backgroundColor": "#f3f3f3"}}></span></a></li>
 												<li><a href="#" className="mn-opt-clr-img"
 														data-src="assets/img/product/12.jpg"
 														data-src-hover="assets/img/product/11.jpg"
 														data-tooltip="Orange"><span
-															style={{"background-color": "#242424"}}></span></a></li>
+															style={{"backgroundColor": "#242424"}}></span></a></li>
 											</ul>
 										</div>
 										<a href="#" onClick={(e) => e.preventDefault()} className="mn-wishlist" data-tooltip title="Wishlist">
@@ -645,12 +871,12 @@ export default function Home() {
 														data-src="assets/img/product/13.jpg"
 														data-src-hover="assets/img/product/14.jpg"
 														data-tooltip="Orange"><span
-															style={{"background-color": "#d48a5b"}}></span></a></li>
+															style={{"backgroundColor": "#d48a5b"}}></span></a></li>
 												<li><a href="#" className="mn-opt-clr-img"
 														data-src="assets/img/product/14.jpg"
 														data-src-hover="assets/img/product/13.jpg"
 														data-tooltip="Orange"><span
-															style={{"background-color": "#242424"}}></span></a></li>
+															style={{"backgroundColor": "#242424"}}></span></a></li>
 											</ul>
 										</div>
 										<a href="#" onClick={(e) => e.preventDefault()} className="mn-wishlist" data-tooltip title="Wishlist">
@@ -701,12 +927,12 @@ export default function Home() {
 														data-src="assets/img/product/15.jpg"
 														data-src-hover="assets/img/product/16.jpg"
 														data-tooltip="Orange"><span
-															style={{"background-color": "#b75956"}}></span></a></li>
+															style={{"backgroundColor": "#b75956"}}></span></a></li>
 												<li><a href="#" className="mn-opt-clr-img"
 														data-src="assets/img/product/16.jpg"
 														data-src-hover="assets/img/product/15.jpg"
 														data-tooltip="Orange"><span
-															style={{"background-color": "#0e0e0e"}}></span></a></li>
+															style={{"backgroundColor": "#0e0e0e"}}></span></a></li>
 											</ul>
 										</div>
 										<a href="#" onClick={(e) => e.preventDefault()} className="mn-wishlist" data-tooltip title="Wishlist">
@@ -926,17 +1152,17 @@ export default function Home() {
 														data-src="assets/img/product/19.jpg"
 														data-src-hover="assets/img/product/20.jpg"
 														data-tooltip="Orange"><span
-															style={{"background-color": "#de8abc"}}></span></a></li>
+															style={{"backgroundColor": "#de8abc"}}></span></a></li>
 												<li><a href="#" className="mn-opt-clr-img"
 														data-src="assets/img/product/21.jpg"
 														data-src-hover="assets/img/product/22.jpg"
 														data-tooltip="Orange"><span
-															style={{"background-color": "#5e68ce"}}></span></a></li>
+															style={{"backgroundColor": "#5e68ce"}}></span></a></li>
 												<li><a href="#" className="mn-opt-clr-img"
 														data-src="assets/img/product/17.jpg"
 														data-src-hover="assets/img/product/18.jpg"
 														data-tooltip="Orange"><span
-															style={{"background-color": "#eee"}}></span></a></li>
+															style={{"backgroundColor": "#eee"}}></span></a></li>
 											</ul>
 										</div>
 										<a href="#" onClick={(e) => e.preventDefault()} className="mn-wishlist" data-tooltip title="Wishlist">
@@ -992,12 +1218,12 @@ export default function Home() {
 														data-src="assets/img/product/19.jpg"
 														data-src-hover="assets/img/product/20.jpg"
 														data-tooltip="Orange"><span
-															style={{"background-color": "#de8abc"}}></span></a></li>
+															style={{"backgroundColor": "#de8abc"}}></span></a></li>
 												<li><a href="#" className="mn-opt-clr-img"
 														data-src="assets/img/product/23.jpg"
 														data-src-hover="assets/img/product/24.jpg"
 														data-tooltip="Orange"><span
-															style={{"background-color": "#a14f3b"}}></span></a></li>
+															style={{"backgroundColor": "#a14f3b"}}></span></a></li>
 											</ul>
 										</div>
 										<a href="#" onClick={(e) => e.preventDefault()} className="mn-wishlist" data-tooltip title="Wishlist">
@@ -1066,12 +1292,12 @@ export default function Home() {
 														data-src="assets/img/product/7.jpg"
 														data-src-hover="assets/img/product/7.jpg"
 														data-tooltip="Orange"><span
-															style={{"background-color": "#e97e70"}}></span></a></li>
+															style={{"backgroundColor": "#e97e70"}}></span></a></li>
 												<li><a href="#" className="mn-opt-clr-img"
 														data-src="assets/img/product/8.jpg"
 														data-src-hover="assets/img/product/8.jpg"
 														data-tooltip="Orange"><span
-															style={{"background-color": "#70e98a"}}></span></a></li>
+															style={{"backgroundColor": "#70e98a"}}></span></a></li>
 											</ul>
 										</div>
 										<a href="#" onClick={(e) => e.preventDefault()} className="mn-wishlist" data-tooltip title="Wishlist">
@@ -1123,12 +1349,12 @@ export default function Home() {
 														data-src="assets/img/product/9.jpg"
 														data-src-hover="assets/img/product/9.jpg"
 														data-tooltip="Orange"><span
-															style={{"background-color": "#0e0e0e"}}></span></a></li>
+															style={{"backgroundColor": "#0e0e0e"}}></span></a></li>
 												<li><a href="#" className="mn-opt-clr-img"
 														data-src="assets/img/product/10.jpg"
 														data-src-hover="assets/img/product/10.jpg"
 														data-tooltip="Orange"><span
-															style={{"background-color": "#c54367"}}></span></a></li>
+															style={{"backgroundColor": "#c54367"}}></span></a></li>
 											</ul>
 										</div>
 										<a href="#" onClick={(e) => e.preventDefault()} className="mn-wishlist active" data-tooltip
@@ -1184,12 +1410,12 @@ export default function Home() {
 														data-src="assets/img/product/1.jpg"
 														data-src-hover="assets/img/product/3.jpg"
 														data-tooltip="Gray"><span
-															style={{"background-color": "#f3f3f3"}}></span></a></li>
+															style={{"backgroundColor": "#f3f3f3"}}></span></a></li>
 												<li><a href="#" className="mn-opt-clr-img"
 														data-src="assets/img/product/2.jpg"
 														data-src-hover="assets/img/product/4.jpg"
 														data-tooltip="Orange"><span
-															style={{"background-color": "#e8c2ff"}}></span></a></li>
+															style={{"backgroundColor": "#e8c2ff"}}></span></a></li>
 											</ul>
 										</div>
 										<a href="#" onClick={(e) => e.preventDefault()} className="mn-wishlist" data-tooltip title="Wishlist">
@@ -1240,12 +1466,12 @@ export default function Home() {
 														data-src="assets/img/product/11.jpg"
 														data-src-hover="assets/img/product/12.jpg"
 														data-tooltip="Orange"><span
-															style={{"background-color": "#f3f3f3"}}></span></a></li>
+															style={{"backgroundColor": "#f3f3f3"}}></span></a></li>
 												<li><a href="#" className="mn-opt-clr-img"
 														data-src="assets/img/product/12.jpg"
 														data-src-hover="assets/img/product/11.jpg"
 														data-tooltip="Orange"><span
-															style={{"background-color": "#242424"}}></span></a></li>
+															style={{"backgroundColor": "#242424"}}></span></a></li>
 											</ul>
 										</div>
 										<a href="#" onClick={(e) => e.preventDefault()} className="mn-wishlist" data-tooltip title="Wishlist">
@@ -1296,12 +1522,12 @@ export default function Home() {
 														data-src="assets/img/product/13.jpg"
 														data-src-hover="assets/img/product/14.jpg"
 														data-tooltip="Orange"><span
-															style={{"background-color": "#d48a5b"}}></span></a></li>
+															style={{"backgroundColor": "#d48a5b"}}></span></a></li>
 												<li><a href="#" className="mn-opt-clr-img"
 														data-src="assets/img/product/14.jpg"
 														data-src-hover="assets/img/product/13.jpg"
 														data-tooltip="Orange"><span
-															style={{"background-color": "#242424"}}></span></a></li>
+															style={{"backgroundColor": "#242424"}}></span></a></li>
 											</ul>
 										</div>
 										<a href="#" onClick={(e) => e.preventDefault()} className="mn-wishlist" data-tooltip title="Wishlist">
@@ -1352,12 +1578,12 @@ export default function Home() {
 														data-src="assets/img/product/15.jpg"
 														data-src-hover="assets/img/product/16.jpg"
 														data-tooltip="Orange"><span
-															style={{"background-color": "#b75956"}}></span></a></li>
+															style={{"backgroundColor": "#b75956"}}></span></a></li>
 												<li><a href="#" className="mn-opt-clr-img"
 														data-src="assets/img/product/16.jpg"
 														data-src-hover="assets/img/product/15.jpg"
 														data-tooltip="Orange"><span
-															style={{"background-color": "#0e0e0e"}}></span></a></li>
+															style={{"backgroundColor": "#0e0e0e"}}></span></a></li>
 											</ul>
 										</div>
 										<a href="#" onClick={(e) => e.preventDefault()} className="mn-wishlist" data-tooltip title="Wishlist">
