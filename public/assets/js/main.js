@@ -642,6 +642,8 @@
     });
 });
 
+
+
     /*== Tooltips ==*/
     $('[data-tooltip]').on('mouseenter', function () {
         const $el = $(this);

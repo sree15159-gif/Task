@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { useState, useEffect } from 'react';
@@ -188,36 +189,36 @@ export default function Home() {
                 </a>
                 <ul className="mn-sb-drop">
                   <li className="list">
-                    <a href="#" className="mn-page-link drop">Pizza</a>
+                    <a href="#" className="mn-page-Link drop">Pizza</a>
                   </li>
                   <li className="list">
-								<a href="shop-right-sidebar.html" className="mn-page-link drop">Shirts</a>
+								<Link href="/shop-right-sidebar" className="mn-page-Link drop"><span>Shirts</span></Link>
 							</li>
 							<li className="list">
-								<a href="shop-right-sidebar.html" className="mn-page-link drop">gowns</a>
+								<Link href="/shop-right-sidebar" className="mn-page-Link drop"><span>gowns</span></Link>
 							</li>
 							<li className="list">
-								<a href="shop-right-sidebar.html" className="mn-page-link drop">Dresses</a>
+								<Link href="/shop-right-sidebar" className="mn-page-Link drop"><span>Dresses</span></Link>
 							</li>
 							<li className="list">
-								<a href="shop-right-sidebar.html" className="mn-page-link drop">sharees</a>
+								<Link href="/shop-right-sidebar" className="mn-page-Link drop"><span>sharees</span></Link>
 							</li>
 							<li className="list">
-								<a href="shop-right-sidebar.html" className="mn-page-link drop">jeans</a>
+								<Link href="/shop-right-sidebar" className="mn-page-Link drop"><span>jeans</span></Link>
 							</li>
                 </ul>
               </li>
              					<li className="mn-sb-item sb-drop-item">
-						<a href="shop-right-sidebar.html" className="mn-drop-toggle">
+						<Link href="/shop-right-sidebar" className="mn-drop-toggle">
 							<img src="assets/img/icons/shoes.svg" alt="clothes"/>
 							<span className="condense">Shoes</span>
-						</a>
+						</Link>
 					</li>
 					<li className="mn-sb-item sb-drop-item">
-						<a href="shop-right-sidebar.html" className="mn-drop-toggle">
+						<Link href="/shop-right-sidebar" className="mn-drop-toggle">
 							<img src="assets/img/icons/glasses.svg" alt="glasses"/>
 							<span className="condense">glasses</span>
-						</a>
+						</Link>
 					</li>
 					<li className="mn-sb-item sb-drop-item">
 						<a href="#" onClick={(e) => e.preventDefault()} className="mn-drop-toggle">
@@ -226,21 +227,21 @@ export default function Home() {
 						</a>
 						<ul className="mn-sb-drop">
 							<li className="list">
-								<a href="shop-right-sidebar.html" className="mn-page-link drop">Purse</a>
+								<Link href="/shop-right-sidebar" className="mn-page-Link drop">Purse</Link>
 							</li>
 							<li className="list">
-								<a href="shop-right-sidebar.html" className="mn-page-link drop">Bags</a>
+								<Link href="/shop-right-sidebar" className="mn-page-Link drop">Bags</Link>
 							</li>
 							<li className="list">
-								<a href="shop-right-sidebar.html" className="mn-page-link drop">wallet</a>
+								<Link href="/shop-right-sidebar" className="mn-page-Link drop">wallet</Link>
 							</li>
 						</ul>
 					</li>
 					<li className="mn-sb-item sb-drop-item">
-						<a href="shop-right-sidebar.html" className="mn-drop-toggle">
+						<Link href="/shop-right-sidebar" className="mn-drop-toggle">
 							<img src="assets/img/icons/hat.svg" alt="hat"/>
 							<span className="condense">Hat</span>
-						</a>
+						</Link>
 					</li>
 					<li className="mn-sb-item sb-drop-item">
 						<a href="#" onClick={(e) => e.preventDefault()} className="mn-drop-toggle">
@@ -249,16 +250,16 @@ export default function Home() {
 						</a>
 						<ul className="mn-sb-drop">
 							<li className="list">
-								<a href="shop-right-sidebar.html" className="mn-page-link drop">Lipstick</a>
+								<Link href="/shop-right-sidebar" className="mn-page-Link drop">Lipstick</Link>
 							</li>
 							<li className="list">
-								<a href="shop-right-sidebar.html" className="mn-page-link drop">eye liner</a>
+								<Link href="/shop-right-sidebar" className="mn-page-Link drop">eye liner</Link>
 							</li>
 							<li className="list">
-								<a href="shop-right-sidebar.html" className="mn-page-link drop">nail paint</a>
+								<Link href="/shop-right-sidebar" className="mn-page-Link drop">nail paint</Link>
 							</li>
 							<li className="list">
-								<a href="shop-right-sidebar.html" className="mn-page-link drop">Makeup kit</a>
+								<Link href="/shop-right-sidebar" className="mn-page-Link drop">Makeup kit</Link>
 							</li>
 						</ul>
 					</li>
@@ -269,19 +270,19 @@ export default function Home() {
 						</a>
 						<ul className="mn-sb-drop">
 							<li className="list">
-								<a href="shop-right-sidebar.html" className="mn-page-link drop">Shampoo</a>
+								<Link href="/shop-right-sidebar" className="mn-page-Link drop">Shampoo</Link>
 							</li>
 							<li className="list">
-								<a href="shop-right-sidebar.html" className="mn-page-link drop">face wash</a>
+								<Link href="/shop-right-sidebar" className="mn-page-Link drop">face wash</Link>
 							</li>
 							<li className="list">
-								<a href="shop-right-sidebar.html" className="mn-page-link drop">body wash</a>
+								<Link href="/shop-right-sidebar" className="mn-page-Link drop">body wash</Link>
 							</li>
 							<li className="list">
-								<a href="shop-right-sidebar.html" className="mn-page-link drop">sunscreen</a>
+								<Link href="/shop-right-sidebar" className="mn-page-Link drop">sunscreen</Link>
 							</li>
 							<li className="list">
-								<a href="shop-right-sidebar.html" className="mn-page-link drop">serum</a>
+								<Link href="/shop-right-sidebar" className="mn-page-Link drop">serum</Link>
 							</li>
 						</ul>
 					</li>
@@ -293,21 +294,21 @@ export default function Home() {
 						</a>
 						<ul className="mn-sb-drop">
 							<li className="list">
-								<a href="shop-right-sidebar.html" className="mn-page-link drop">cup cake</a>
+								<Link href="/shop-right-sidebar" className="mn-page-Link drop">cup cake</Link>
 							</li>
 							<li className="list">
-								<a href="shop-right-sidebar.html" className="mn-page-link drop">pastry</a>
+								<Link href="/shop-right-sidebar" className="mn-page-Link drop">pastry</Link>
 							</li>
 							<li className="list">
-								<a href="shop-right-sidebar.html" className="mn-page-link drop">Cake</a>
+								<Link href="/shop-right-sidebar" className="mn-page-Link drop">Cake</Link>
 							</li>
 						</ul>
 					</li>
 					<li className="mn-sb-item sb-drop-item">
-						<a href="shop-right-sidebar.html" className="mn-drop-toggle">
+						<Link href="shop-right-sidebar" className="mn-drop-toggle">
 							<img src="assets/img/icons/bread.svg" alt="Bread"/>
 							<span className="condense">Bread</span>
-						</a>
+						</Link>
 					</li>
 					<li className="mn-sb-title condense"><span>Medicine</span></li>
 					<li className="mn-sb-item sb-drop-item">
@@ -317,52 +318,52 @@ export default function Home() {
 						</a>
 						<ul className="mn-sb-drop">
 							<li className="list">
-								<a href="shop-right-sidebar.html" className="mn-page-link drop">Sweet Potato</a>
+								<Link href="/shop-right-sidebar" className="mn-page-Link drop">Sweet Potato</Link>
 							</li>
 							<li className="list">
-								<a href="shop-right-sidebar.html" className="mn-page-link drop">Ginger</a>
+								<Link href="/shop-right-sidebar" className="mn-page-Link drop">Ginger</Link>
 							</li>
 							<li className="list">
-								<a href="shop-right-sidebar.html" className="mn-page-link drop">cassava</a>
+								<Link href="/shop-right-sidebar" className="mn-page-Link drop">cassava</Link>
 							</li>
 						</ul>
 					</li>
 					<li className="mn-sb-item sb-drop-item">
-						<a href="shop-right-sidebar.html" className="mn-drop-toggle">
+						<Link href="/shop-right-sidebar" className="mn-drop-toggle">
 							<img src="assets/img/icons/tomato.svg" alt="tomato"/>
 							<span className="condense">Tomato</span>
-						</a>
+						</Link>
 					</li>
 					<li className="mn-sb-item sb-drop-item">
-						<a href="shop-right-sidebar.html" className="mn-drop-toggle">
+						<Link href="/shop-right-sidebar" className="mn-drop-toggle">
 							<img src="assets/img/icons/lemon.svg" alt="lemon"/>
 							<span className="condense">Lemon</span>
-						</a>
+						</Link>
 					</li>
 					<li className="mn-sb-title condense"><span>Home Services</span></li>
 					<li className="mn-sb-item sb-drop-item">
-						<a href="shop-right-sidebar.html" className="mn-drop-toggle">
+						<Link href="/shop-right-sidebar" className="mn-drop-toggle">
 							<img src="assets/img/icons/avocado.svg" alt="avocado"/>
 							<span className="condense">avocado</span>
-						</a>
+						</Link>
 					</li>
 					<li className="mn-sb-item sb-drop-item">
-						<a href="shop-right-sidebar.html" className="mn-drop-toggle">
+						<Link href="/shop-right-sidebar" className="mn-drop-toggle">
 							<img src="assets/img/icons/strawberry.svg" alt="strawberry"/>
 							<span className="condense">strawberry</span>
-						</a>
+						</Link>
 					</li>
 					<li className="mn-sb-item sb-drop-item">
-						<a href="shop-right-sidebar.html" className="mn-drop-toggle">
+						<Link href="/shop-right-sidebar" className="mn-drop-toggle">
 							<img src="assets/img/icons/cherry.svg" alt="cherry"/>
 							<span className="condense">cherry</span>
-						</a>
+						</Link>
 					</li>
 					<li className="mn-sb-item sb-drop-item">
-						<a href="shop-right-sidebar.html" className="mn-drop-toggle">
+						<Link href="/shop-right-sidebar" className="mn-drop-toggle">
 							<img src="assets/img/icons/lychee.svg" alt="Lychee"/>
 							<span className="condense">Lychee</span>
-						</a>
+						</Link>
 					</li>
 
             </ul>
@@ -588,15 +589,15 @@ export default function Home() {
 										<span className="trending">trending</span>
 									</div>
 									<div className="mn-img">
-										<a href="product-detail.html" className="image">
+										<Link href="/product-detail" className="image">
 											<img className="main-img" src="assets/img/product/5.jpg" alt="product"/>
 											<img className="hover-img" src="assets/img/product/6.jpg" alt="product"/>
-										</a>
+										</Link>
 										<div className="mn-pro-loader"></div>
 										<div className="mn-options">
 											<ul>
 												<li><a href="#" onClick={(e) => e.preventDefault()} data-tooltip title="Quick View"
-														data-link-action="quickview" data-bs-toggle="modal"
+														data-Link-action="quickview" data-bs-toggle="modal"
 														data-bs-target="#quickview_modal">
 														<i className="ri-eye-line"></i></a></li>
 												<li><a href="#" onClick={(e) => e.preventDefault()} data-tooltip title="Compare"
@@ -610,7 +611,7 @@ export default function Home() {
 								</div>
 								<div className="mn-product-detail">
 									<div className="cat">
-										<a href="shop-right-sidebar.html">T-shirt</a>
+										<Link href="/shop-right-sidebar">T-shirt</Link>
 										<ul>
 											<li>s</li>
 											<li>m</li>
@@ -658,10 +659,10 @@ export default function Home() {
 							<div className="mn-product-card">
 								<div className="mn-product-img">
 									<div className="mn-img">
-										<a href="product-detail.html" className="image">
+										<Link href="/product-detail" className="image">
 											<img className="main-img" src="assets/img/product/9.jpg" alt="product"/>
 											<img className="hover-img" src="assets/img/product/10.jpg" alt="product"/>
-										</a>
+										</Link>
 										<div className="mn-pro-loader"></div>
 										<div className="mn-options">
 											<ul>
@@ -680,7 +681,7 @@ export default function Home() {
 								</div>
 								<div className="mn-product-detail">
 									<div className="cat">
-										<a href="shop-right-sidebar.html">Shoes</a>
+										<Link href="/shop-right-sidebar">Shoes</Link>
 										<ul>
 											<li>7</li>
 											<li>8</li>
@@ -719,15 +720,15 @@ export default function Home() {
 										<span className="new">new</span>
 									</div>
 									<div className="mn-img">
-										<a href="product-detail.html" className="image">
+										<Link href="/product-detail" className="image">
 											<img className="main-img" src="assets/img/product/1.jpg" alt="product"/>
 											<img className="hover-img" src="assets/img/product/3.jpg" alt="product"/>
-										</a>
+										</Link>
 										<div className="mn-pro-loader"></div>
 										<div className="mn-options">
 											<ul>
 												<li><a href="#" onClick={(e) => e.preventDefault()} data-tooltip title="Quick View"
-														data-link-action="quickview" data-bs-toggle="modal"
+														data-Link-action="quickview" data-bs-toggle="modal"
 														data-bs-target="#quickview_modal"><i
 															className="ri-eye-line"></i></a></li>
 												<li><a href="#" onClick={(e) => e.preventDefault()} data-tooltip title="Compare"
@@ -741,7 +742,7 @@ export default function Home() {
 								</div>
 								<div className="mn-product-detail">
 									<div className="cat">
-										<a href="shop-right-sidebar.html">Top</a>
+										<Link href="/shop-right-sidebar">Top</Link>
 										<ul>
 											<li>s</li>
 											<li>m</li>
@@ -779,15 +780,15 @@ export default function Home() {
 										<span className="sale">sale</span>
 									</div>
 									<div className="mn-img">
-										<a href="product-detail.html" className="image">
+										<Link href="/product-detail" className="image">
 											<img className="main-img" src="assets/img/product/11.jpg" alt="product"/>
 											<img className="hover-img" src="assets/img/product/12.jpg" alt="product"/>
-										</a>
+										</Link>
 										<div className="mn-pro-loader"></div>
 										<div className="mn-options">
 											<ul>
 												<li><a href="#" onClick={(e) => e.preventDefault()} data-tooltip title="Quick View"
-														data-link-action="quickview" data-bs-toggle="modal"
+														data-Link-action="quickview" data-bs-toggle="modal"
 														data-bs-target="#quickview_modal"><i
 															className="ri-eye-line"></i></a></li>
 												<li><a href="#" onClick={(e) => e.preventDefault()} data-tooltip title="Compare"
@@ -801,9 +802,9 @@ export default function Home() {
 								</div>
 								<div className="mn-product-detail">
 									<div className="cat">
-										<a href="shop-right-sidebar.html">watches</a>
+										<Link href="/shop-right-sidebar">watches</Link>
 									</div>
-									<h5><a href="">Mantu smart watch</a></h5>
+									<h5><Link href="">Mantu smart watch</Link></h5>
 									<div className="mn-price">
 										<div className="mn-price-new">$955</div>
 										<div className="mn-price-old">$999</div>
@@ -835,15 +836,15 @@ export default function Home() {
 										<span className="discount">20% off</span>
 									</div>
 									<div className="mn-img">
-										<a href="product-detail.html" className="image">
+										<Link href="/product-detail" className="image">
 											<img className="main-img" src="assets/img/product/13.jpg" alt="product"/>
 											<img className="hover-img" src="assets/img/product/14.jpg" alt="product"/>
-										</a>
+										</Link>
 										<div className="mn-pro-loader"></div>
 										<div className="mn-options">
 											<ul>
 												<li><a href="#" onClick={(e) => e.preventDefault()} data-tooltip title="Quick View"
-														data-link-action="quickview" data-bs-toggle="modal"
+														data-Link-action="quickview" data-bs-toggle="modal"
 														data-bs-target="#quickview_modal"><i
 															className="ri-eye-line"></i></a></li>
 												<li><a href="#" onClick={(e) => e.preventDefault()} data-tooltip title="Compare"
@@ -857,9 +858,9 @@ export default function Home() {
 								</div>
 								<div className="mn-product-detail">
 									<div className="cat">
-										<a href="shop-right-sidebar.html">belt</a>
+										<Link href="/shop-right-sidebar">belt</Link>
 									</div>
-									<h5><a href="">Mantu leather belt</a></h5>
+									<h5><Link href="">Mantu leather belt</Link></h5>
 									<div className="mn-price">
 										<div className="mn-price-new">$10</div>
 										<div className="mn-price-old">$12</div>
@@ -888,15 +889,15 @@ export default function Home() {
 							<div className="mn-product-card">
 								<div className="mn-product-img">
 									<div className="mn-img">
-										<a href="product-detail.html" className="image">
+										<Link href="/product-detail" className="image">
 											<img className="main-img" src="assets/img/product/15.jpg" alt="product"/>
 											<img className="hover-img" src="assets/img/product/16.jpg" alt="product"/>
-										</a>
+										</Link>
 										<div className="mn-pro-loader"></div>
 										<div className="mn-options">
 											<ul>
 												<li><a href="#" onClick={(e) => e.preventDefault()} data-tooltip title="Quick View"
-														data-link-action="quickview" data-bs-toggle="modal"
+														data-Link-action="quickview" data-bs-toggle="modal"
 														data-bs-target="#quickview_modal"><i
 															className="ri-eye-line"></i></a></li>
 												<li><a href="#" onClick={(e) => e.preventDefault()} data-tooltip title="Compare"
@@ -910,7 +911,7 @@ export default function Home() {
 								</div>
 								<div className="mn-product-detail">
 									<div className="cat">
-										<a href="shop-right-sidebar.html">Bag</a>
+										<Link href="/shop-right-sidebar">Bag</Link>
 										<ul>
 											<li>m</li>
 											<li>l</li>
@@ -1111,15 +1112,15 @@ export default function Home() {
 										<span className="new">new</span>
 									</div>
 									<div className="mn-img">
-										<a href="product-detail.html" className="image">
+										<Link href="/product-detail" className="image">
 											<img className="main-img" src="assets/img/product/17.jpg" alt="product"/>
 											<img className="hover-img" src="assets/img/product/18.jpg" alt="product"/>
-										</a>
+										</Link>
 										<div className="mn-pro-loader"></div>
 										<div className="mn-options">
 											<ul>
 												<li><a href="#" onClick={(e) => e.preventDefault()} data-tooltip title="Quick View"
-														data-link-action="quickview" data-bs-toggle="modal"
+														data-Link-action="quickview" data-bs-toggle="modal"
 														data-bs-target="#quickview_modal"><i
 															className="ri-eye-line"></i></a></li>
 												<li><a href="#" onClick={(e) => e.preventDefault()} data-tooltip title="Compare"
@@ -1133,7 +1134,7 @@ export default function Home() {
 								</div>
 								<div className="mn-product-detail">
 									<div className="cat">
-										<a href="shop-right-sidebar.html">T-shirt</a>
+										<Link href="/shop-right-sidebar">T-shirt</Link>
 										<ul>
 											<li>s</li>
 											<li>m</li>
@@ -1177,15 +1178,15 @@ export default function Home() {
 										<span className="sale">Sale</span>
 									</div>
 									<div className="mn-img">
-										<a href="product-detail.html" className="image">
+										<Link href="/product-detail" className="image">
 											<img className="main-img" src="assets/img/product/23.jpg" alt="product"/>
 											<img className="hover-img" src="assets/img/product/24.jpg" alt="product"/>
-										</a>
+										</Link>
 										<div className="mn-pro-loader"></div>
 										<div className="mn-options">
 											<ul>
 												<li><a href="#" onClick={(e) => e.preventDefault()} data-tooltip title="Quick View"
-														data-link-action="quickview" data-bs-toggle="modal"
+														data-Link-action="quickview" data-bs-toggle="modal"
 														data-bs-target="#quickview_modal"><i
 															className="ri-eye-line"></i></a></li>
 												<li><a href="#" onClick={(e) => e.preventDefault()} data-tooltip title="Compare"
@@ -1199,7 +1200,7 @@ export default function Home() {
 								</div>
 								<div className="mn-product-detail">
 									<div className="cat">
-										<a href="shop-right-sidebar.html">T-shirt</a>
+										<Link href="/shop-right-sidebar">T-shirt</Link>
 										<ul>
 											<li>s</li>
 											<li>m</li>
@@ -1239,15 +1240,15 @@ export default function Home() {
 										<span className="trending">trending</span>
 									</div>
 									<div className="mn-img">
-										<a href="product-detail.html" className="image">
+										<Link href="/product-detail" className="image">
 											<img className="main-img" src="assets/img/product/5.jpg" alt="product"/>
 											<img className="hover-img" src="assets/img/product/6.jpg" alt="product"/>
-										</a>
+										</Link>
 										<div className="mn-pro-loader"></div>
 										<div className="mn-options">
 											<ul>
 												<li><a href="#" onClick={(e) => e.preventDefault()} data-tooltip title="Quick View"
-														data-link-action="quickview" data-bs-toggle="modal"
+														data-Link-action="quickview" data-bs-toggle="modal"
 														data-bs-target="#quickview_modal"><i
 															className="ri-eye-line"></i></a></li>
 												<li><a href="#" onClick={(e) => e.preventDefault()} data-tooltip title="Compare"
@@ -1261,7 +1262,7 @@ export default function Home() {
 								</div>
 								<div className="mn-product-detail">
 									<div className="cat">
-										<a href="shop-right-sidebar.html">T-shirt</a>
+										<Link href="/shop-right-sidebar">T-shirt</Link>
 										<ul>
 											<li>s</li>
 											<li>m</li>
@@ -1309,15 +1310,15 @@ export default function Home() {
 							<div className="mn-product-card">
 								<div className="mn-product-img">
 									<div className="mn-img">
-										<a href="product-detail.html" className="image">
+										<Link href="/product-detail" className="image">
 											<img className="main-img" src="assets/img/product/9.jpg" alt="product"/>
 											<img className="hover-img" src="assets/img/product/10.jpg" alt="product"/>
-										</a>
+										</Link>
 										<div className="mn-pro-loader"></div>
 										<div className="mn-options">
 											<ul>
 												<li><a href="#" onClick={(e) => e.preventDefault()} data-tooltip title="Quick View"
-														data-link-action="quickview" data-bs-toggle="modal"
+														data-Link-action="quickview" data-bs-toggle="modal"
 														data-bs-target="#quickview_modal"><i
 															className="ri-eye-line"></i></a></li>
 												<li><a href="#" onClick={(e) => e.preventDefault()} data-tooltip title="Compare"
@@ -1331,7 +1332,7 @@ export default function Home() {
 								</div>
 								<div className="mn-product-detail">
 									<div className="cat">
-										<a href="shop-right-sidebar.html">Shoes</a>
+										<Link href="/shop-right-sidebar">Shoes</Link>
 										<ul>
 											<li>7</li>
 											<li>8</li>
@@ -1370,15 +1371,15 @@ export default function Home() {
 										<span className="new">new</span>
 									</div>
 									<div className="mn-img">
-										<a href="product-detail.html" className="image">
+										<Link href="/product-detail" className="image">
 											<img className="main-img" src="assets/img/product/1.jpg" alt="product"/>
 											<img className="hover-img" src="assets/img/product/3.jpg" alt="product"/>
-										</a>
+										</Link>
 										<div className="mn-pro-loader"></div>
 										<div className="mn-options">
 											<ul>
 												<li><a href="#" onClick={(e) => e.preventDefault()} data-tooltip title="Quick View"
-														data-link-action="quickview" data-bs-toggle="modal"
+														data-Link-action="quickview" data-bs-toggle="modal"
 														data-bs-target="#quickview_modal"><i
 															className="ri-eye-line"></i></a></li>
 												<li><a href="#" onClick={(e) => e.preventDefault()} data-tooltip title="Compare"
@@ -1392,7 +1393,7 @@ export default function Home() {
 								</div>
 								<div className="mn-product-detail">
 									<div className="cat">
-										<a href="shop-right-sidebar.html">Top</a>
+										<Link href="/shop-right-sidebar">Top</Link>
 										<ul>
 											<li>s</li>
 											<li>m</li>
@@ -1430,15 +1431,15 @@ export default function Home() {
 										<span className="sale">sale</span>
 									</div>
 									<div className="mn-img">
-										<a href="product-detail.html" className="image">
+										<Link href="/product-detail" className="image">
 											<img className="main-img" src="assets/img/product/11.jpg" alt="product"/>
 											<img className="hover-img" src="assets/img/product/12.jpg" alt="product"/>
-										</a>
+										</Link>
 										<div className="mn-pro-loader"></div>
 										<div className="mn-options">
 											<ul>
 												<li><a href="#" onClick={(e) => e.preventDefault()} data-tooltip title="Quick View"
-														data-link-action="quickview" data-bs-toggle="modal"
+														data-Link-action="quickview" data-bs-toggle="modal"
 														data-bs-target="#quickview_modal"><i
 															className="ri-eye-line"></i></a></li>
 												<li><a href="#" onClick={(e) => e.preventDefault()} data-tooltip title="Compare"
@@ -1452,9 +1453,9 @@ export default function Home() {
 								</div>
 								<div className="mn-product-detail">
 									<div className="cat">
-										<a href="shop-right-sidebar.html">watches</a>
+										<Link href="/shop-right-sidebar">watches</Link>
 									</div>
-									<h5><a href="">Mantu smart watch</a></h5>
+									<h5><Link href="">Mantu smart watch</Link></h5>
 									<div className="mn-price">
 										<div className="mn-price-new">$955</div>
 										<div className="mn-price-old">$999</div>
@@ -1486,15 +1487,15 @@ export default function Home() {
 										<span className="discount">20% off</span>
 									</div>
 									<div className="mn-img">
-										<a href="product-detail.html" className="image">
+										<Link href="/product-detail" className="image">
 											<img className="main-img" src="assets/img/product/13.jpg" alt="product"/>
 											<img className="hover-img" src="assets/img/product/14.jpg" alt="product"/>
-										</a>
+										</Link>
 										<div className="mn-pro-loader"></div>
 										<div className="mn-options">
 											<ul>
 												<li><a href="#" onClick={(e) => e.preventDefault()} data-tooltip title="Quick View"
-														data-link-action="quickview" data-bs-toggle="modal"
+														data-Link-action="quickview" data-bs-toggle="modal"
 														data-bs-target="#quickview_modal"><i
 															className="ri-eye-line"></i></a></li>
 												<li><a href="#" onClick={(e) => e.preventDefault()} data-tooltip title="Compare"
@@ -1508,9 +1509,9 @@ export default function Home() {
 								</div>
 								<div className="mn-product-detail">
 									<div className="cat">
-										<a href="shop-right-sidebar.html">belt</a>
+										<Link href="/shop-right-sidebar">belt</Link>
 									</div>
-									<h5><a href="">Mantu leather belt</a></h5>
+									<h5><Link href="">Mantu leather belt</Link></h5>
 									<div className="mn-price">
 										<div className="mn-price-new">$10</div>
 										<div className="mn-price-old">$12</div>
@@ -1539,15 +1540,15 @@ export default function Home() {
 							<div className="mn-product-card">
 								<div className="mn-product-img">
 									<div className="mn-img">
-										<a href="product-detail.html" className="image">
+										<Link href="/product-detail" className="image">
 											<img className="main-img" src="assets/img/product/15.jpg" alt="product"/>
 											<img className="hover-img" src="assets/img/product/16.jpg" alt="product"/>
-										</a>
+										</Link>
 										<div className="mn-pro-loader"></div>
 										<div className="mn-options">
 											<ul>
 												<li><a href="#" onClick={(e) => e.preventDefault()} data-tooltip title="Quick View"
-														data-link-action="quickview" data-bs-toggle="modal"
+														data-Link-action="quickview" data-bs-toggle="modal"
 														data-bs-target="#quickview_modal"><i
 															className="ri-eye-line"></i></a></li>
 												<li><a href="#" onClick={(e) => e.preventDefault()} data-tooltip title="Compare"
@@ -1561,7 +1562,7 @@ export default function Home() {
 								</div>
 								<div className="mn-product-detail">
 									<div className="cat">
-										<a href="shop-right-sidebar.html">Bag</a>
+										<Link href="/shop-right-sidebar">Bag</Link>
 										<ul>
 											<li>m</li>
 											<li>l</li>
@@ -1672,7 +1673,7 @@ export default function Home() {
 					</section> */}
 
 					{/* <!-- Blog Section Start --> */}
-					<section className="mn-blog p-tb-15">
+					{/* <section className="mn-blog p-tb-15"> */}
 						{/* <div className="mn-title">
 							<h2>Our <span>Blogs</span></h2>
 						</div>
@@ -1769,7 +1770,7 @@ export default function Home() {
 								</div>
 							</div>
 						</div> */}
-					</section>
+					{/* </section> */}
 
 					{/* <!-- Instagram Start --> */}
 					<section className="mn-instagram module p-tb-15" id="insta">

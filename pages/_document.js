@@ -27,21 +27,6 @@ export default function Document() {
 
         {/* Main CSS */}
         <link rel="stylesheet" href="/assets/css/style.css" />
-        <link rel="stylesheet" href="/assets/css/responsive.css" />
-        <link rel="stylesheet" href="/assets/css/custom.css" />
-        <link rel="stylesheet" href="/assets/css/extra.css" />
-        <link rel="stylesheet" href="/assets/css/rtl.css" />
-        <link rel="stylesheet" href="/assets/css/rtl-custom.css" />
-        <link rel="stylesheet" href="/assets/css/rtl-extra.css" />
-        <link rel="stylesheet" href="/assets/css/print.css" />
-        <link rel="stylesheet" href="/assets/css/print-rtl.css" />
-        <link rel="stylesheet" href="/assets/css/print-custom.css" />
-        <link rel="stylesheet" href="/assets/css/print-extra.css" />
-        <link rel="stylesheet" href="/assets/css/print-rtl-custom.css" />
-
-        {/* Fonts */}
-        <link rel="preload" href="/assets/fonts/font.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
-        <link rel="preload" href="/assets/fonts/font2.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
       </Head>
       <body>
         <Main />

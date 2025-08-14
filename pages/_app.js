@@ -3,6 +3,7 @@ import Script from 'next/script'
 import { useRouter } from 'next/router'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
+import { AppProvider } from '../context/AppContext'
 import '../styles/faux.css'
 // import '@/styles/globals.css'
 
@@ -63,7 +64,6 @@ export default function MyApp({ Component, pageProps }) {
       <Script src="/assets/js/vendor/countdownTimer.js" strategy="beforeInteractive" />
       <Script src="/assets/js/vendor/infiniteslidev2.js" strategy="beforeInteractive" />
       <Script src="/assets/js/vendor/smoothscroll.min.js" strategy="beforeInteractive" />
-      <Script src="/assets/js/vendor/bootstrap.bundle.min.js" strategy="beforeInteractive" />
       <Script src="/assets/js/vendor/bootstrap.min.js" strategy="beforeInteractive" />
       <Script src="/assets/js/vendor/jquery.zoom.min.js" strategy="beforeInteractive" />
 
@@ -103,17 +103,19 @@ export default function MyApp({ Component, pageProps }) {
       </Script>
 
       {/* Layout Handling */}
-      {isHomePage ? (
-        <Component {...pageProps} />
-      ) : (
-        <main className="wrapper sb-default">
-          <Header />
-          <div className="mn-main-content">
-            <Component {...pageProps} />
-          </div>
-          <Footer />
-        </main>
-      )}
+      <AppProvider>
+        {isHomePage ? (
+          <Component {...pageProps} />
+        ) : (
+          <main className="wrapper sb-default">
+            <Header />
+            <div className="mn-main-content">
+              <Component {...pageProps} />
+            </div>
+            <Footer />
+          </main>
+        )}
+      </AppProvider>
     </>
   )
 }

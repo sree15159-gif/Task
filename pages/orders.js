@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import { Html, Head, Main, NextScript } from 'next/document';
+
 import { useState } from 'react';
 
 const Orders = () => {
@@ -70,10 +70,9 @@ const Orders = () => {
 
   return (
     <>
-      <Header />
       
       <main className="wrapper sb-default">
-        <div className="mn-main-content">
+        {/* <div className="mn-main-content"> */}
           <div className="row">
             <div className="col-xxl-12">
               <div className="mn-breadcrumb m-b-30">
@@ -193,10 +192,9 @@ const Orders = () => {
               </section>
             </div>
           </div>
-        </div>
+        {/* </div> */}
       </main>
       
-      <Footer />
     </>
   );
 };

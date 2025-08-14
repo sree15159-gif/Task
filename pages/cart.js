@@ -1,296 +1,337 @@
 import Link from 'next/link';
 import { Html, Head, Main, NextScript } from 'next/document';
 
-import { useState } from 'react';
 
 const Cart = () => {
-  const [cartItems, setCartItems] = useState([
-    {
-      id: 1,
-      name: 'Fresh Organic Apples',
-      price: 4.99,
-      originalPrice: 6.99,
-      quantity: 2,
-      image: '/assets/img/product/1.jpg',
-      store: 'Fresh Market',
-      inStock: true,
-      maxQuantity: 10
-    },
-    {
-      id: 2,
-      name: 'Premium Olive Oil',
-      price: 12.99,
-      originalPrice: 15.99,
-      quantity: 1,
-      image: '/assets/img/product/2.jpg',
-      store: 'Organic Store',
-      inStock: true,
-      maxQuantity: 5
-    },
-    {
-      id: 3,
-      name: 'Whole Grain Bread',
-      price: 3.99,
-      originalPrice: 4.99,
-      quantity: 1,
-      image: '/assets/img/product/3.jpg',
-      store: 'Bakery Corner',
-      inStock: false,
-      maxQuantity: 0
-    }
-  ]);
-
-  const updateQuantity = (id, newQuantity) => {
-    if (newQuantity < 1) return;
-    setCartItems(items =>
-      items.map(item =>
-        item.id === id
-          ? { ...item, quantity: Math.min(newQuantity, item.maxQuantity) }
-          : item
-      )
-    );
-  };
-
-  const removeItem = (id) => {
-    setCartItems(items => items.filter(item => item.id !== id));
-  };
-
-  const moveToWishlist = (id) => {
-    // Move item to wishlist logic
-    removeItem(id);
-    console.log('Moved to wishlist:', id);
-  };
-
-  const subtotal = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-  const savings = cartItems.reduce((sum, item) => sum + ((item.originalPrice - item.price) * item.quantity), 0);
-  const tax = subtotal * 0.08; // 8% tax
-  const deliveryFee = subtotal > 50 ? 0 : 4.99;
-  const total = subtotal + tax + deliveryFee;
-
   return (
     <>
-      
-      
-      <main className="wrapper sb-default">
-        <div className="mn-main-content">
-          <div className="row">
-            <div className="col-xxl-12">
-              <div className="mn-breadcrumb m-b-30">
-                <div className="row">
-                  <div className="col-12">
-                    <div className="row gi_breadcrumb_inner">
-                      <div className="col-md-6 col-sm-12">
-                        <h2 className="mn-breadcrumb-title">Shopping Cart</h2>
-                      </div>
-                      <div className="col-md-6 col-sm-12">
-                        <ul className="mn-breadcrumb-list">
-                          <li className="mn-breadcrumb-item"><Link href="/">Home</Link></li>
-                          <li className="mn-breadcrumb-item active">Cart</li>
-                        </ul>
-                      </div>
-                    </div>
+<div className="">
+  <div className="mn-breadcrumb m-b-30">
+    <div className="row">
+      <div className="col-12">
+        <div className="row gi_breadcrumb_inner">
+          <div className="col-md-6 col-sm-12">
+            <h2 className="mn-breadcrumb-title">Cart Page</h2>
+          </div>
+          <div className="col-md-6 col-sm-12">
+            {/* mn-breadcrumb-list start */}
+            <ul className="mn-breadcrumb-list">
+              <li className="mn-breadcrumb-item">
+                <a href="index.html">Home</a>
+              </li>
+              <li className="mn-breadcrumb-item active">Cart Page</li>
+            </ul>
+            {/* mn-breadcrumb-list end */}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {/* Cart section */}
+  <section className="mn-cart-section p-b-15">
+    <h2 className="d-none">Cart Page</h2>
+    <div className="row">
+      <div className="mn-cart-leftside col-lg-8 col-md-12">
+        {/* cart content Start */}
+        <div className="mn-cart-content">
+          <div className="mn-cart-inner cart_list">
+            <div className="row">
+              <form action="#">
+                <div className="table-content cart-table-content">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th style={{ textAlign: "center" }}>Quantity</th>
+                        <th>Total</th>
+                        <th />
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr className="mn-cart-product">
+                        <td data-label="Product" className="mn-cart-pro-name">
+                          <a href="product-detail.html">
+                            <img
+                              className="mn-cart-pro-img"
+                              src="assets/img/product/11.jpg"
+                              alt=""
+                            />
+                            Mantu smart watch
+                          </a>
+                        </td>
+                        <td data-label="Price" className="mn-cart-pro-price">
+                          <span className="amount">$516.00</span>
+                        </td>
+                        <td
+                          data-label="Quantity"
+                          className="mn-cart-pro-qty"
+                          style={{ textAlign: "center" }}
+                        >
+                          <div className="cart-qty-plus-minus">
+                            <input
+                              className="cart-plus-minus"
+                              type="text"
+                              name="cartqtybutton"
+                              defaultValue={1}
+                            />
+                          </div>
+                        </td>
+                        <td data-label="Total" className="mn-cart-pro-subtotal">
+                          $516.00
+                        </td>
+                        <td data-label="Remove" className="mn-cart-pro-remove">
+                          <a href="#">
+                            <i className="ri-delete-bin-line" />
+                          </a>
+                        </td>
+                      </tr>
+                      <tr className="mn-cart-product">
+                        <td data-label="Product" className="mn-cart-pro-name">
+                          <a href="product-detail.html">
+                            <img
+                              className="mn-cart-pro-img"
+                              src="assets/img/product/15.jpg"
+                              alt=""
+                            />
+                            Leather bag
+                          </a>
+                        </td>
+                        <td data-label="Price" className="mn-cart-pro-price">
+                          <span className="amount">$75.00</span>
+                        </td>
+                        <td
+                          data-label="Quantity"
+                          className="mn-cart-pro-qty"
+                          style={{ textAlign: "center" }}
+                        >
+                          <div className="cart-qty-plus-minus">
+                            <input
+                              className="cart-plus-minus"
+                              type="text"
+                              name="cartqtybutton"
+                              defaultValue={1}
+                            />
+                          </div>
+                        </td>
+                        <td data-label="Total" className="mn-cart-pro-subtotal">
+                          $75.00
+                        </td>
+                        <td data-label="Remove" className="mn-cart-pro-remove">
+                          <a href="#">
+                            <i className="ri-delete-bin-line" />
+                          </a>
+                        </td>
+                      </tr>
+                      <tr className="mn-cart-product">
+                        <td data-label="Product" className="mn-cart-pro-name">
+                          <a href="product-detail.html">
+                            <img
+                              className="mn-cart-pro-img"
+                              src="assets/img/product/21.jpg"
+                              alt=""
+                            />
+                            Cotton fabric T-shirt
+                          </a>
+                        </td>
+                        <td data-label="Price" className="mn-cart-pro-price">
+                          <span className="amount">$48.00</span>
+                        </td>
+                        <td
+                          data-label="Quantity"
+                          className="mn-cart-pro-qty"
+                          style={{ textAlign: "center" }}
+                        >
+                          <div className="cart-qty-plus-minus">
+                            <input
+                              className="cart-plus-minus"
+                              type="text"
+                              name="cartqtybutton"
+                              defaultValue={1}
+                            />
+                          </div>
+                        </td>
+                        <td data-label="Total" className="mn-cart-pro-subtotal">
+                          $48.00
+                        </td>
+                        <td data-label="Remove" className="mn-cart-pro-remove">
+                          <a href="#">
+                            <i className="ri-delete-bin-line" />
+                          </a>
+                        </td>
+                      </tr>
+                      <tr className="mn-cart-product">
+                        <td data-label="Product" className="mn-cart-pro-name">
+                          <a href="product-detail.html">
+                            <img
+                              className="mn-cart-pro-img"
+                              src="assets/img/product/9.jpg"
+                              alt=""
+                            />
+                            Special sport shoes
+                          </a>
+                        </td>
+                        <td data-label="Price" className="mn-cart-pro-price">
+                          <span className="amount">$95.00</span>
+                        </td>
+                        <td
+                          data-label="Quantity"
+                          className="mn-cart-pro-qty"
+                          style={{ textAlign: "center" }}
+                        >
+                          <div className="cart-qty-plus-minus">
+                            <input
+                              className="cart-plus-minus"
+                              type="text"
+                              name="cartqtybutton"
+                              defaultValue={1}
+                            />
+                          </div>
+                        </td>
+                        <td data-label="Total" className="mn-cart-pro-subtotal">
+                          $95.00
+                        </td>
+                        <td data-label="Remove" className="mn-cart-pro-remove">
+                          <a href="#">
+                            <i className="ri-delete-bin-line" />
+                          </a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div className="col-lg-12">
+                  <div className="mn-cart-update-bottom">
+                    <a href="#">Continue Shopping</a>
+                    <button className="mn-btn-2">
+                      <span>Check Out</span>
+                    </button>
                   </div>
                 </div>
-              </div>
-
-              <section className="mn-cart p-b-15">
-                <div className="container">
-                  {cartItems.length > 0 ? (
-                    <div className="row">
-                      <div className="col-lg-8 col-md-12">
-                        <div className="mn-cart-table">
-                          <div className="cart-header">
-                            <h3>Shopping Cart ({cartItems.length} items)</h3>
-                            <button className="clear-cart-btn" onClick={() => setCartItems([])}>
-                              Clear All
-                            </button>
-                          </div>
-
-                          <div className="cart-items">
-                            {cartItems.map((item) => (
-                              <div key={item.id} className="cart-item">
-                                <div className="item-image">
-                                  <img src={item.image} alt={item.name} />
-                                  {!item.inStock && (
-                                    <div className="out-of-stock-overlay">Out of Stock</div>
-                                  )}
-                                </div>
-
-                                <div className="item-details">
-                                  <h4 className="item-name">{item.name}</h4>
-                                  <p className="item-store">
-                                    <i className="ri-store-line"></i>
-                                    {item.store}
-                                  </p>
-                                  <div className="item-price">
-                                    <span className="current-price">${item.price}</span>
-                                    {item.originalPrice > item.price && (
-                                      <span className="original-price">${item.originalPrice}</span>
-                                    )}
-                                  </div>
-                                  {item.originalPrice > item.price && (
-                                    <div className="savings">
-                                      You save: ${((item.originalPrice - item.price) * item.quantity).toFixed(2)}
-                                    </div>
-                                  )}
-                                </div>
-
-                                <div className="item-quantity">
-                                  <div className="quantity-controls">
-                                    <button 
-                                      className="qty-btn minus"
-                                      onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                                      disabled={item.quantity <= 1}
-                                    >
-                                      <i className="ri-subtract-line"></i>
-                                    </button>
-                                    <input 
-                                      type="number" 
-                                      value={item.quantity}
-                                      onChange={(e) => updateQuantity(item.id, parseInt(e.target.value) || 1)}
-                                      min="1"
-                                      max={item.maxQuantity}
-                                      className="qty-input"
-                                    />
-                                    <button 
-                                      className="qty-btn plus"
-                                      onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                                      disabled={item.quantity >= item.maxQuantity}
-                                    >
-                                      <i className="ri-add-line"></i>
-                                    </button>
-                                  </div>
-                                  {!item.inStock && (
-                                    <p className="stock-status out-of-stock">Out of Stock</p>
-                                  )}
-                                </div>
-
-                                <div className="item-total">
-                                  <span className="total-price">
-                                    ${(item.price * item.quantity).toFixed(2)}
-                                  </span>
-                                </div>
-
-                                <div className="item-actions">
-                                  <button 
-                                    className="action-btn wishlist-btn"
-                                    onClick={() => moveToWishlist(item.id)}
-                                    title="Move to Wishlist"
-                                  >
-                                    <i className="ri-heart-line"></i>
-                                  </button>
-                                  <button 
-                                    className="action-btn remove-btn"
-                                    onClick={() => removeItem(item.id)}
-                                    title="Remove Item"
-                                  >
-                                    <i className="ri-delete-bin-line"></i>
-                                  </button>
-                                </div>
-                              </div>
-                            ))}
-                          </div>
-
-                          <div className="cart-actions">
-                            <Link href="/shop-full-width" className="mn-btn-2 btn">
-                              <i className="ri-arrow-left-line"></i>
-                              Continue Shopping
-                            </Link>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="col-lg-4 col-md-12">
-                        <div className="mn-cart-summary">
-                          <h4>Order Summary</h4>
-                          
-                          <div className="summary-details">
-                            <div className="summary-row">
-                              <span>Subtotal ({cartItems.length} items)</span>
-                              <span>${subtotal.toFixed(2)}</span>
-                            </div>
-                            {savings > 0 && (
-                              <div className="summary-row savings-row">
-                                <span>Total Savings</span>
-                                <span className="savings-amount">-${savings.toFixed(2)}</span>
-                              </div>
-                            )}
-                            <div className="summary-row">
-                              <span>Delivery Fee</span>
-                              <span>
-                                {deliveryFee === 0 ? (
-                                  <span className="free-delivery">FREE</span>
-                                ) : (
-                                  `$${deliveryFee.toFixed(2)}`
-                                )}
-                              </span>
-                            </div>
-                            <div className="summary-row">
-                              <span>Tax</span>
-                              <span>${tax.toFixed(2)}</span>
-                            </div>
-                            <div className="summary-divider"></div>
-                            <div className="summary-row total-row">
-                              <span><strong>Total</strong></span>
-                              <span><strong>${total.toFixed(2)}</strong></span>
-                            </div>
-                          </div>
-
-                          {deliveryFee > 0 && (
-                            <div className="delivery-notice">
-                              <i className="ri-information-line"></i>
-                              Add ${(50 - subtotal).toFixed(2)} more for FREE delivery
-                            </div>
-                          )}
-
-                          <div className="checkout-actions">
-                            <Link href="/checkout" className="mn-btn-1 btn w-100 mb-3">
-                              Proceed to Checkout
-                            </Link>
-                            <div className="payment-methods">
-                              <span>We accept:</span>
-                              <div className="payment-icons">
-                                <i className="ri-visa-line"></i>
-                                <i className="ri-mastercard-line"></i>
-                                <i className="ri-paypal-line"></i>
-                                <i className="ri-apple-line"></i>
-                              </div>
-                            </div>
-                          </div>
-
-                          <div className="security-badges">
-                            <div className="security-item">
-                              <i className="ri-shield-check-line"></i>
-                              <span>Secure Checkout</span>
-                            </div>
-                            <div className="security-item">
-                              <i className="ri-truck-line"></i>
-                              <span>Fast Delivery</span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  ) : (
-                    <div className="mn-empty-cart">
-                      <div className="empty-cart-content">
-                        <i className="ri-shopping-cart-line empty-icon"></i>
-                        <h3>Your cart is empty</h3>
-                        <p>Looks like you haven't added any items to your cart yet</p>
-                        <Link href="/shop-full-width" className="mn-btn-1 btn">
-                          Start Shopping
-                        </Link>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </section>
+              </form>
             </div>
           </div>
         </div>
-      </main>
-      
-   
+        {/*cart content End */}
+      </div>
+      {/* Sidebar Area Start */}
+      <div className="mn-cart-rightside col-lg-4 col-md-12 m-t-991">
+        <div className="mn-sidebar-wrap">
+          {/* Sidebar Summary Block */}
+          <div className="mn-sidebar-block">
+            <div className="mn-sb-title">
+              <h3 className="mn-sidebar-title">Summary</h3>
+            </div>
+            <div className="mn-sb-block-content">
+              <div className="mn-cart-form">
+                <p>Enter your destination to get a shipping estimate</p>
+                <form action="#" method="post">
+                  <span className="mn-cart-wrap">
+                    <label>Country *</label>
+                    <span className="mn-cart-select-inner">
+                      <select
+                        name="gi_cart_country"
+                        id="mn-cart-select-country"
+                        className="mn-cart-select"
+                      >
+                        <option selected="" disabled="">
+                          United States
+                        </option>
+                        <option value={1}>Country 1</option>
+                        <option value={2}>Country 2</option>
+                        <option value={3}>Country 3</option>
+                        <option value={4}>Country 4</option>
+                        <option value={5}>Country 5</option>
+                      </select>
+                    </span>
+                  </span>
+                  <span className="mn-cart-wrap">
+                    <label>State/Province</label>
+                    <span className="mn-cart-select-inner">
+                      <select
+                        name="gi_cart_state"
+                        id="mn-cart-select-state"
+                        className="mn-cart-select"
+                      >
+                        <option selected="" disabled="">
+                          Please Select a region, state
+                        </option>
+                        <option value={1}>Region/State 1</option>
+                        <option value={2}>Region/State 2</option>
+                        <option value={3}>Region/State 3</option>
+                        <option value={4}>Region/State 4</option>
+                        <option value={5}>Region/State 5</option>
+                      </select>
+                    </span>
+                  </span>
+                  <span className="mn-cart-wrap">
+                    <label>Zip/Postal Code</label>
+                    <input
+                      type="text"
+                      name="postalcode"
+                      placeholder="Zip/Postal Code"
+                    />
+                  </span>
+                </form>
+              </div>
+            </div>
+            <div className="mn-sb-block-content">
+              <div className="mn-cart-summary-bottom">
+                <div className="mn-cart-summary">
+                  <div>
+                    <span className="text-left">Sub-Total</span>
+                    <span className="text-right">$734.00</span>
+                  </div>
+                  <div>
+                    <span className="text-left">Delivery Charges</span>
+                    <span className="text-right">$80.00</span>
+                  </div>
+                  <div>
+                    <span className="text-left">Coupan Discount</span>
+                    <span className="text-right">
+                      <a className="mn-cart-coupan">Apply Coupan</a>
+                    </span>
+                  </div>
+                  <div className="mn-cart-coupan-content">
+                    <form
+                      className="mn-cart-coupan-form"
+                      name="mn-cart-coupan-form"
+                      method="post"
+                      action="#"
+                    >
+                      <input
+                        className="mn-coupan"
+                        type="text"
+                        required=""
+                        placeholder="Enter Your Coupan Code"
+                        name="mn-coupan"
+                        defaultValue=""
+                      />
+                      <button
+                        className="mn-btn-2"
+                        type="submit"
+                        name="subscribe"
+                        value=""
+                      >
+                        <span>Apply</span>
+                      </button>
+                    </form>
+                  </div>
+                  <div className="mn-cart-summary-total">
+                    <span className="text-left">Total Amount</span>
+                    <span className="text-right">$814.00</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+ 
     </>
   );
 };

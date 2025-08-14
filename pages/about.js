@@ -4,30 +4,11 @@ import { Html, Head, Main, NextScript } from 'next/document';
 
 const About = () => {
   return (
-    <>
-     
+    <>  
+       {/* <main className="wrapper sb-default"> */}
       
-      <main className="wrapper sb-default">***
-        {/* Sidebar */}
-        <div className="mn-sidebar-overlay"></div>
-        <div className="mn-sidebar">
-          <div className="mn-sidebar-body">
-            <button type="button" className="side-close" title="Close"></button>
-            <ul className="mn-sb-list">
-              <li className="mn-sb-title condense"><span>Categories</span></li>
-              <li className="mn-sb-item sb-drop-item">
-                <a href="#" className="mn-drop-toggle">
-                  <img src="/assets/img/icons/clothes-2.svg" alt="clothes" />
-                  <span className="condense">
-                    Clothes<i className="drop-arrow ri-arrow-down-s-line"></i>
-                  </span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
 
-       <div className="mn-main-content">
+       {/* <div className="mn-main-content"> */}
   <div className="mn-breadcrumb m-b-30">
     <div className="row">
       <div className="col-12">
@@ -39,7 +20,7 @@ const About = () => {
             {/* mn-breadcrumb-list start */}
             <ul className="mn-breadcrumb-list">
               <li className="mn-breadcrumb-item">
-                <a href="index.html">Home</a>
+                <a href="/">Home</a>
               </li>
               <li className="mn-breadcrumb-item active">About us Page</li>
             </ul>
@@ -657,9 +638,9 @@ const About = () => {
     </div>
   </section>
   {/* Facts Section End */}
-</div>
+{/* </div> */}
 
-      </main>
+      {/* </main> */}
       
      
     </>

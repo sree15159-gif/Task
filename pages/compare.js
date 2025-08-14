@@ -1,340 +1,379 @@
 import Link from 'next/link';
 import { Html, Head, Main, NextScript } from 'next/document';
-import { useState } from 'react';
+
 
 const Compare = () => {
-  const [compareItems, setCompareItems] = useState([
-    {
-      id: 1,
-      name: 'Fresh Organic Apples',
-      price: 4.99,
-      originalPrice: 6.99,
-      image: '/assets/img/product/apple.jpg',
-      rating: 4.5,
-      reviewCount: 89,
-      store: 'Fresh Market',
-      category: 'Fruits',
-      inStock: true,
-      features: {
-        'Type': 'Organic',
-        'Origin': 'Local Farm',
-        'Weight': '1 lb',
-        'Shelf Life': '7-10 days',
-        'Nutritional Value': 'High in Fiber & Vitamin C'
-      }
-    },
-    {
-      id: 2,
-      name: 'Premium Red Apples',
-      price: 3.99,
-      originalPrice: 5.99,
-      image: '/assets/img/product/red-apple.jpg',
-      rating: 4.2,
-      reviewCount: 67,
-      store: 'City Supermarket',
-      category: 'Fruits',
-      inStock: true,
-      features: {
-        'Type': 'Conventional',
-        'Origin': 'Washington State',
-        'Weight': '1 lb',
-        'Shelf Life': '5-7 days',
-        'Nutritional Value': 'Good source of Fiber'
-      }
-    },
-    {
-      id: 3,
-      name: 'Gala Apples',
-      price: 3.49,
-      originalPrice: 4.99,
-      image: '/assets/img/product/gala-apple.jpg',
-      rating: 4.0,
-      reviewCount: 45,
-      store: 'Organic Valley',
-      category: 'Fruits',
-      inStock: false,
-      features: {
-        'Type': 'Organic',
-        'Origin': 'New York',
-        'Weight': '1 lb',
-        'Shelf Life': '6-8 days',
-        'Nutritional Value': 'Rich in Antioxidants'
-      }
-    }
-  ]);
-
-  const removeFromCompare = (id) => {
-    setCompareItems(compareItems.filter(item => item.id !== id));
-  };
-
-  const addToCart = (item) => {
-    console.log('Added to cart:', item);
-    // Add to cart logic here
-  };
-
-  const addToWishlist = (item) => {
-    console.log('Added to wishlist:', item);
-    // Add to wishlist logic here
-  };
-
-  const allFeatures = [...new Set(compareItems.flatMap(item => Object.keys(item.features)))];
-
   return (
     <>
-    
-      
-      <main className="wrapper sb-default">
-        <div className="mn-main-content">
-          <div className="row">
-            <div className="col-xxl-12">
-              <div className="mn-breadcrumb m-b-30">
-                <div className="row">
-                  <div className="col-12">
-                    <div className="row gi_breadcrumb_inner">
-                      <div className="col-md-6 col-sm-12">
-                        <h2 className="mn-breadcrumb-title">Compare Products</h2>
-                      </div>
-                      <div className="col-md-6 col-sm-12">
-                        <ul className="mn-breadcrumb-list">
-                          <li className="mn-breadcrumb-item"><Link href="/">Home</Link></li>
-                          <li className="mn-breadcrumb-item active">Compare</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
+<div className="">
+  <div className="mn-breadcrumb m-b-30">
+    <div className="row">
+      <div className="col-12">
+        <div className="row gi_breadcrumb_inner">
+          <div className="col-md-6 col-sm-12">
+            <h2 className="mn-breadcrumb-title">Compare Page</h2>
+          </div>
+          <div className="col-md-6 col-sm-12">
+            {/* mn-breadcrumb-list start */}
+            <ul className="mn-breadcrumb-list">
+              <li className="mn-breadcrumb-item">
+                <a href="index.html">Home</a>
+              </li>
+              <li className="mn-breadcrumb-item active">Compare Page</li>
+            </ul>
+            {/* mn-breadcrumb-list end */}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {/* Compare section */}
+  <section className="mn-compare-list p-b-15">
+    <h2 className="d-none">Compare</h2>
+    <div className="row">
+      <div className="col-md-12">
+        <div className="mn-compare-box">
+          <div className="mn-compare-col title-col">
+            <div className="mn-compare-cell">
+              <div className="title">
+                <h5>Product Image</h5>
+              </div>
+            </div>
+            <div className="mn-compare-cell">
+              <h5>Name</h5>
+            </div>
+            <div className="mn-compare-cell">
+              <h5>Category</h5>
+            </div>
+            <div className="mn-compare-cell">
+              <h5>Ratings</h5>
+            </div>
+            <div className="mn-compare-cell">
+              <h5>Availability</h5>
+            </div>
+            <div className="mn-compare-cell">
+              <h5>location</h5>
+            </div>
+            <div className="mn-compare-cell">
+              <h5>Brand</h5>
+            </div>
+            <div className="mn-compare-cell">
+              <h5>SKU</h5>
+            </div>
+            <div className="mn-compare-cell">
+              <h5>Quantity</h5>
+            </div>
+            <div className="mn-compare-cell">
+              <h5>Size</h5>
+            </div>
+            <div className="mn-compare-cell">
+              <div className="desc">
+                <h5>Description</h5>
+              </div>
+            </div>
+          </div>
+          <div className="mn-compare-col product-col">
+            <a href="javascript:void(0)" className="remove-compare-product">
+              <i className="ri-close-large-line" />
+            </a>
+            <div className="mn-compare-cell">
+              <div className="list">
+                <img src="assets/img/product/31.jpg" alt="product" />
+                <div className="mn-action">
+                  <ul>
+                    <li>
+                      <a
+                        className="mn-btn-group wishlist mn-wishlist"
+                        title="Wishlist"
+                      >
+                        <i className="ri-heart-line" />
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="javascript:void(0)"
+                        title="Add To Cart"
+                        className="mn-btn-group add-to-cart mn-add-cart"
+                      >
+                        <i className="ri-shopping-cart-line" />
+                      </a>
+                    </li>
+                  </ul>
                 </div>
               </div>
-
-              <section className="mn-compare p-b-15">
-                <div className="container">
-                  {compareItems.length === 0 ? (
-                    <div className="empty-compare">
-                      <div className="empty-state">
-                        <i className="ri-scales-line"></i>
-                        <h3>No products to compare</h3>
-                        <p>Add products to your comparison list to see them here</p>
-                        <Link href="/" className="mn-btn-1 btn">
-                          Continue Shopping
-                        </Link>
-                      </div>
-                    </div>
-                  ) : (
-                    <div className="row">
-                      <div className="col-12">
-                        <div className="compare-header">
-                          <h3>Compare Products ({compareItems.length})</h3>
-                          <p>Compare features, prices, and ratings to make the best choice</p>
-                        </div>
-
-                        <div className="compare-table-container">
-                          <div className="compare-table">
-                            {/* Product Images Row */}
-                            <div className="compare-row compare-images">
-                              <div className="compare-label">Product</div>
-                              {compareItems.map((item) => (
-                                <div key={item.id} className="compare-cell">
-                                  <div className="product-compare-card">
-                                    <button 
-                                      className="remove-compare-btn"
-                                      onClick={() => removeFromCompare(item.id)}
-                                      title="Remove from comparison"
-                                    >
-                                      <i className="ri-close-line"></i>
-                                    </button>
-                                    <div className="product-image">
-                                      <img src={item.image} alt={item.name} />
-                                      {!item.inStock && (
-                                        <div className="out-of-stock-badge">Out of Stock</div>
-                                      )}
-                                    </div>
-                                    <h4>{item.name}</h4>
-                                    <p className="store-name">{item.store}</p>
-                                  </div>
-                                </div>
-                              ))}
-                            </div>
-
-                            {/* Price Row */}
-                            <div className="compare-row">
-                              <div className="compare-label">Price</div>
-                              {compareItems.map((item) => (
-                                <div key={item.id} className="compare-cell">
-                                  <div className="price-info">
-                                    <span className="current-price">${item.price}</span>
-                                    {item.originalPrice > item.price && (
-                                      <span className="original-price">${item.originalPrice}</span>
-                                    )}
-                                    {item.originalPrice > item.price && (
-                                      <span className="discount">
-                                        {Math.round(((item.originalPrice - item.price) / item.originalPrice) * 100)}% OFF
-                                      </span>
-                                    )}
-                                  </div>
-                                </div>
-                              ))}
-                            </div>
-
-                            {/* Rating Row */}
-                            <div className="compare-row">
-                              <div className="compare-label">Rating</div>
-                              {compareItems.map((item) => (
-                                <div key={item.id} className="compare-cell">
-                                  <div className="rating-info">
-                                    <div className="stars">
-                                      {[...Array(5)].map((_, i) => (
-                                        <i 
-                                          key={i} 
-                                          className={`ri-star-${i < Math.floor(item.rating) ? 'fill' : 'line'}`}
-                                        ></i>
-                                      ))}
-                                    </div>
-                                    <span>{item.rating} ({item.reviewCount} reviews)</span>
-                                  </div>
-                                </div>
-                              ))}
-                            </div>
-
-                            {/* Stock Status Row */}
-                            <div className="compare-row">
-                              <div className="compare-label">Availability</div>
-                              {compareItems.map((item) => (
-                                <div key={item.id} className="compare-cell">
-                                  <span className={`stock-status ${item.inStock ? 'in-stock' : 'out-of-stock'}`}>
-                                    <i className={`ri-${item.inStock ? 'check' : 'close'}-circle-line`}></i>
-                                    {item.inStock ? 'In Stock' : 'Out of Stock'}
-                                  </span>
-                                </div>
-                              ))}
-                            </div>
-
-                            {/* Features Rows */}
-                            {allFeatures.map((feature) => (
-                              <div key={feature} className="compare-row">
-                                <div className="compare-label">{feature}</div>
-                                {compareItems.map((item) => (
-                                  <div key={item.id} className="compare-cell">
-                                    <span>{item.features[feature] || '-'}</span>
-                                  </div>
-                                ))}
-                              </div>
-                            ))}
-
-                            {/* Action Buttons Row */}
-                            <div className="compare-row compare-actions">
-                              <div className="compare-label">Actions</div>
-                              {compareItems.map((item) => (
-                                <div key={item.id} className="compare-cell">
-                                  <div className="action-buttons">
-                                    <button 
-                                      className="mn-btn-1 btn w-100 mb-2"
-                                      onClick={() => addToCart(item)}
-                                      disabled={!item.inStock}
-                                    >
-                                      <i className="ri-shopping-cart-line"></i>
-                                      {item.inStock ? 'Add to Cart' : 'Out of Stock'}
-                                    </button>
-                                    <button 
-                                      className="mn-btn-2 btn w-100 mb-2"
-                                      onClick={() => addToWishlist(item)}
-                                    >
-                                      <i className="ri-heart-line"></i>
-                                      Add to Wishlist
-                                    </button>
-                                    <Link 
-                                      href={`/product-detail?id=${item.id}`}
-                                      className="mn-btn-2 btn w-100"
-                                    >
-                                      <i className="ri-eye-line"></i>
-                                      View Details
-                                    </Link>
-                                  </div>
-                                </div>
-                              ))}
-                            </div>
-                          </div>
-                        </div>
-
-                        {/* Comparison Summary */}
-                        <div className="comparison-summary mt-4">
-                          <h4>Comparison Summary</h4>
-                          <div className="summary-cards">
-                            <div className="summary-card">
-                              <h5>Best Price</h5>
-                              <div className="best-option">
-                                {(() => {
-                                  const cheapest = compareItems.reduce((prev, current) => 
-                                    prev.price < current.price ? prev : current
-                                  );
-                                  return (
-                                    <div className="option-info">
-                                      <img src={cheapest.image} alt={cheapest.name} />
-                                      <div>
-                                        <span className="name">{cheapest.name}</span>
-                                        <span className="price">${cheapest.price}</span>
-                                      </div>
-                                    </div>
-                                  );
-                                })()}
-                              </div>
-                            </div>
-
-                            <div className="summary-card">
-                              <h5>Highest Rated</h5>
-                              <div className="best-option">
-                                {(() => {
-                                  const highest = compareItems.reduce((prev, current) => 
-                                    prev.rating > current.rating ? prev : current
-                                  );
-                                  return (
-                                    <div className="option-info">
-                                      <img src={highest.image} alt={highest.name} />
-                                      <div>
-                                        <span className="name">{highest.name}</span>
-                                        <span className="rating">
-                                          <i className="ri-star-fill"></i>
-                                          {highest.rating}
-                                        </span>
-                                      </div>
-                                    </div>
-                                  );
-                                })()}
-                              </div>
-                            </div>
-
-                            <div className="summary-card">
-                              <h5>Best Value</h5>
-                              <div className="best-option">
-                                {(() => {
-                                  const bestValue = compareItems.reduce((prev, current) => {
-                                    const prevValue = prev.rating / prev.price;
-                                    const currentValue = current.rating / current.price;
-                                    return prevValue > currentValue ? prev : current;
-                                  });
-                                  return (
-                                    <div className="option-info">
-                                      <img src={bestValue.image} alt={bestValue.name} />
-                                      <div>
-                                        <span className="name">{bestValue.name}</span>
-                                        <span className="value">Best Value</span>
-                                      </div>
-                                    </div>
-                                  );
-                                })()}
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  )}
+            </div>
+            <div className="mn-compare-cell">
+              <p>Men office suit cotton</p>
+            </div>
+            <div className="mn-compare-cell">
+              <p>Snack &amp; Spices</p>
+            </div>
+            <div className="mn-compare-cell">
+              <span className="mn-pro-rating">
+                <i className="ri-star-fill" />
+                <i className="ri-star-fill" />
+                <i className="ri-star-fill" />
+                <i className="ri-star-fill" />
+                <i className="ri-star-fill grey" />
+              </span>
+              <p className="rating-info">(15 Review)</p>
+            </div>
+            <div className="mn-compare-cell">
+              <p className="i-stock">In Stock</p>
+            </div>
+            <div className="mn-compare-cell">
+              <p>In Store , Online</p>
+            </div>
+            <div className="mn-compare-cell">
+              <p>Bhisma Fashion</p>
+            </div>
+            <div className="mn-compare-cell">
+              <p>54786</p>
+            </div>
+            <div className="mn-compare-cell">
+              <p>1</p>
+            </div>
+            <div className="mn-compare-cell">
+              <p>XL</p>
+            </div>
+            <div className="mn-compare-cell">
+              <div className="desc">
+                <p>
+                  There are many variations of passages of Lorem Ipsum
+                  available, but the majority have suffered alteration in some
+                  form, by injected humour.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="mn-compare-col product-col">
+            <a href="javascript:void(0)" className="remove-compare-product">
+              <i className="ri-close-large-line" />
+            </a>
+            <div className="mn-compare-cell">
+              <div className="list">
+                <img src="assets/img/product/1.jpg" alt="product" />
+                <div className="mn-action">
+                  <ul>
+                    <li>
+                      <a
+                        className="mn-btn-group wishlist mn-wishlist"
+                        title="Wishlist"
+                      >
+                        <i className="ri-heart-line" />
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="javascript:void(0)"
+                        title="Add To Cart"
+                        className="mn-btn-group add-to-cart mn-add-cart"
+                      >
+                        <i className="ri-shopping-cart-line" />
+                      </a>
+                    </li>
+                  </ul>
                 </div>
-              </section>
+              </div>
+            </div>
+            <div className="mn-compare-cell">
+              <p>Round neck cotton t-shirt</p>
+            </div>
+            <div className="mn-compare-cell">
+              <p>T-shirt</p>
+            </div>
+            <div className="mn-compare-cell">
+              <span className="mn-pro-rating">
+                <i className="ri-star-fill" />
+                <i className="ri-star-fill" />
+                <i className="ri-star-fill" />
+                <i className="ri-star-fill" />
+                <i className="ri-star-fill" />
+              </span>
+              <p className="rating-info">(654 Review)</p>
+            </div>
+            <div className="mn-compare-cell">
+              <p className="o-stock">Out Of Stock</p>
+            </div>
+            <div className="mn-compare-cell">
+              <p>Online</p>
+            </div>
+            <div className="mn-compare-cell">
+              <p>Darsh Store</p>
+            </div>
+            <div className="mn-compare-cell">
+              <p>85725</p>
+            </div>
+            <div className="mn-compare-cell">
+              <p>2</p>
+            </div>
+            <div className="mn-compare-cell">
+              <p>L</p>
+            </div>
+            <div className="mn-compare-cell">
+              <div className="desc">
+                <p>
+                  Recently with desktop publishing software like Aldus PageMaker
+                  including versions of Lorem Ipsum.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="mn-compare-col product-col">
+            <a href="javascript:void(0)" className="remove-compare-product">
+              <i className="ri-close-large-line" />
+            </a>
+            <div className="mn-compare-cell">
+              <div className="list">
+                <img src="assets/img/product/17.jpg" alt="product" />
+                <div className="mn-action">
+                  <ul>
+                    <li>
+                      <a
+                        className="mn-btn-group wishlist mn-wishlist"
+                        title="Wishlist"
+                      >
+                        <i className="ri-heart-line" />
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="javascript:void(0)"
+                        title="Add To Cart"
+                        className="mn-btn-group add-to-cart mn-add-cart"
+                      >
+                        <i className="ri-shopping-cart-line" />
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div className="mn-compare-cell">
+              <p>T-shirt for womens</p>
+            </div>
+            <div className="mn-compare-cell">
+              <p>Clothes</p>
+            </div>
+            <div className="mn-compare-cell">
+              <span className="mn-pro-rating">
+                <i className="ri-star-fill" />
+                <i className="ri-star-fill" />
+                <i className="ri-star-fill" />
+                <i className="ri-star-fill grey" />
+                <i className="ri-star-fill grey" />
+              </span>
+              <p className="rating-info">(264 Review)</p>
+            </div>
+            <div className="mn-compare-cell">
+              <p className="i-stock">In Stock</p>
+            </div>
+            <div className="mn-compare-cell">
+              <p>In Store</p>
+            </div>
+            <div className="mn-compare-cell">
+              <p>Peoples Store</p>
+            </div>
+            <div className="mn-compare-cell">
+              <p>2546</p>
+            </div>
+            <div className="mn-compare-cell">
+              <p>1</p>
+            </div>
+            <div className="mn-compare-cell">
+              <p>M</p>
+            </div>
+            <div className="mn-compare-cell">
+              <div className="desc">
+                <p>
+                  Lorem Ipsum is simply dummy text of the printing and
+                  typesetting industry. Lorem Ipsum has been the industry's
+                  standard.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="mn-compare-col product-col">
+            <a href="javascript:void(0)" className="remove-compare-product">
+              <i className="ri-close-large-line" />
+            </a>
+            <div className="mn-compare-cell">
+              <div className="list">
+                <img src="assets/img/product/35.jpg" alt="product" />
+                <div className="mn-action">
+                  <ul>
+                    <li>
+                      <a
+                        className="mn-btn-group wishlist mn-wishlist"
+                        title="Wishlist"
+                      >
+                        <i className="ri-heart-line" />
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="javascript:void(0)"
+                        title="Add To Cart"
+                        className="mn-btn-group add-to-cart mn-add-cart"
+                      >
+                        <i className="ri-shopping-cart-line" />
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div className="mn-compare-cell">
+              <p>Tshirt with jacket</p>
+            </div>
+            <div className="mn-compare-cell">
+              <p>Fashion</p>
+            </div>
+            <div className="mn-compare-cell">
+              <span className="mn-pro-rating">
+                <i className="ri-star-fill" />
+                <i className="ri-star-fill" />
+                <i className="ri-star-fill" />
+                <i className="ri-star-fill grey" />
+                <i className="ri-star-fill grey" />
+              </span>
+              <p className="rating-info">(325 Review)</p>
+            </div>
+            <div className="mn-compare-cell">
+              <p className="i-stock">In Stock</p>
+            </div>
+            <div className="mn-compare-cell">
+              <p>In Store</p>
+            </div>
+            <div className="mn-compare-cell">
+              <p>Mariyas Store</p>
+            </div>
+            <div className="mn-compare-cell">
+              <p>6542</p>
+            </div>
+            <div className="mn-compare-cell">
+              <p>2</p>
+            </div>
+            <div className="mn-compare-cell">
+              <p>XL</p>
+            </div>
+            <div className="mn-compare-cell">
+              <div className="desc">
+                <p>
+                  Lorem Ipsum is simply dummy text of the printing and
+                  typesetting industry. Lorem Ipsum has been the industry's.
+                </p>
+              </div>
             </div>
           </div>
         </div>
-      </main>
-      
-      
+      </div>
+    </div>
+  </section>
+</div>
+
+
+ 
     </>
   );
 };
