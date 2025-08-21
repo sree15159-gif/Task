@@ -163,7 +163,6 @@ const StorePage = () => {
   return (
     <>
       <Header />
-      
       <main className="wrapper sb-default">
         <div className="mn-main-content">
           <div className="row">
@@ -278,7 +277,10 @@ const StorePage = () => {
                                 >
                                   <i className="ri-heart-line"></i>
                                 </button>
-                                <Link href={`/product-detail?id=${product.id}`} className="action-btn view-btn">
+                                <Link
+                                  href={`/product-detail?id=${product.id}`}
+                                  className="action-btn view-btn"
+                                  legacyBehavior>
                                   <i className="ri-eye-line"></i>
                                 </Link>
                               </div>
@@ -338,7 +340,6 @@ const StorePage = () => {
           </div>
         </div>
       </main>
-      
       <Footer />
     </>
   );

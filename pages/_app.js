@@ -4,12 +4,34 @@ import { useRouter } from 'next/router'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { AppProvider } from '../context/AppContext'
+import Footernav from '../components/Footernav' 
 import '../styles/faux.css'
 // import '@/styles/globals.css'
+
+// Import vendor styles
+import { useEffect } from 'react'
 
 export default function MyApp({ Component, pageProps }) {
   const router = useRouter()
   const isHomePage = router.pathname === '/'
+  
+  // Load vendor styles dynamically for vendor pages
+  useEffect(() => {
+    if (router.pathname.includes('/vendor') || router.pathname === '/vendors') {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = '/assets/css/vendor-styles.css'
+      document.head.appendChild(link)
+      
+      return () => {
+        // Cleanup on unmount
+        const existingLink = document.querySelector('link[href="/assets/css/vendor-styles.css"]')
+        if (existingLink) {
+          document.head.removeChild(existingLink)
+        }
+      }
+    }
+  }, [router.pathname])
 
   return (
     <>
@@ -113,6 +135,8 @@ export default function MyApp({ Component, pageProps }) {
               <Component {...pageProps} />
             </div>
             <Footer />
+
+            <Footernav />
           </main>
         )}
       </AppProvider>

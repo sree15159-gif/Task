@@ -70,7 +70,7 @@ const Register = () => {
                   <div className="mn-register-wrap">
                     <div className="mn-remember">
                       <input type="checkbox" required />
-                      <label>I agree to the <a href="#">Terms & Conditions</Link></label>
+                      <label>I agree to the <Link href="#"><a>Terms & Conditions</a></Link></label>
                     </div>
                   </div>
                   <div className="mn-register-wrap mn-register-btn">

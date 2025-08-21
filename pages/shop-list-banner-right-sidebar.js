@@ -21,7 +21,7 @@ const ShopListBannerRightSidebar = () => {
               </div>
               <div className="col-md-6 col-sm-12">
                 <ul className="mn-breadcrumb-list">
-                  <li className="mn-breadcrumb-item"><Link href="/">Home</Link></li>
+                  <li className="mn-breadcrumb-item"><Link href="/"><a>Home</a></Link></li>
                   <li className="mn-breadcrumb-item active">Shop List Banner Right Sidebar</li>
                 </ul>
               </div>

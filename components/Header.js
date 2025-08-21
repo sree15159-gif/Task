@@ -6,6 +6,41 @@ import { useApp } from '../context/AppContext'
 
 const Header = () => {
   const { getCartItemsCount, getWishlistItemsCount } = useApp();
+const [location, setLocation] = useState('');
+  const [loadingLocation, setLoadingLocation] = useState(true);
+
+  // 📍 Auto detect location on mount
+  useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        async (position) => {
+          const { latitude, longitude } = position.coords;
+          try {
+            const res = await fetch(
+              `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`
+            );
+            const data = await res.json();
+            if (data.address) {
+              setLocation(
+                `${data.address.city || data.address.town || data.address.village || ''}, ${data.address.country || ''}`
+              );
+            }
+          } catch (error) {
+            console.error('Error fetching location:', error);
+          } finally {
+            setLoadingLocation(false);
+          }
+        },
+        (error) => {
+          console.error('Geolocation error:', error);
+          setLoadingLocation(true);
+        }
+      );
+    } else {
+      alert('Geolocation is not supported by your browser.');
+      setLoadingLocation(false);
+    }
+  }, []);
   
   return (
     <>
@@ -94,6 +129,12 @@ const Header = () => {
 							</span>
 						</a>
 						<Link href="/" className="logo"><img src="/assets/img/logo/logo.png" alt="logo" /></Link>
+
+{/* 📍 Location in border frame */}
+             <span className="location-badge">
+  {loadingLocation ? '📍 Detecting...' : location || 'Location not found'}
+</span>
+
 						<a href="#" onClick={(e) => e.preventDefault()} className="mn-toggle-menu">
 							<div className="header-icon">
 								<i className="ri-menu-3-fill"></i>
@@ -142,6 +183,18 @@ const Header = () => {
 																		Full Width</Link></li>
 															</ul>
 														</li>
+													</ul>
+												</li>
+												<li className="dropdown drop-list">
+													<a href="#" onClick={(e) => e.preventDefault()} className="dropdown-arrow"><i
+															className="ri-arrow-down-s-line"></i></a>
+													<ul className="sub-menu">
+														<li><Link href="/vendors">All Vendors</Link></li>
+														<li><Link href="/vendors?category=food">Restaurants</Link></li>
+														<li><Link href="/vendors?category=groceries">Groceries</Link></li>
+														<li><Link href="/vendors?category=medicine">Pharmacy</Link></li>
+														<li><Link href="/vendors?category=services">Services</Link></li>
+														<li><Link href="/vendors?category=shop">Local Shops</Link></li>
 													</ul>
 												</li>
 												<li className="dropdown drop-list">
@@ -229,6 +282,17 @@ const Header = () => {
 																Full Width</Link></li>
 													</ul>
 												</li>
+											</ul>
+										</li>
+										<li>
+											<a href="#" onClick={(e) => e.preventDefault()}>Vendors</a>
+											<ul className="sub-menu">
+												<li><Link href="/vendors">All Vendors</Link></li>
+												<li><Link href="/vendors?category=food">Restaurants</Link></li>
+												<li><Link href="/vendors?category=groceries">Groceries</Link></li>
+												<li><Link href="/vendors?category=medicine">Pharmacy</Link></li>
+												<li><Link href="/vendors?category=services">Services</Link></li>
+												<li><Link href="/vendors?category=shop">Local Shops</Link></li>
 											</ul>
 										</li>
 										<li>

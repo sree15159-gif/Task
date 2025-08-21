@@ -1,12 +1,23 @@
 import Link from "next/link";
+import React from 'react';
+import Head from 'next/head';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
+
+
 
 export default function Home() {
   // State for managing hero image changes on category hover
-  const [heroImage, setHeroImage] = useState('/assets/img/hero/1.jpg');
+  const [heroImage, setHeroImage] = useState('/assets/img/hero/handyman-service-icon.jpg');
   const [isClient, setIsClient] = useState(false);
+  
+  // State for vendor/product navigation
+//   const [showVendors, setShowVendors] = useState(false);
+//   const [showProducts, setShowProducts] = useState(false);
+//   const [selectedCategory, setSelectedCategory] = useState(null);
+//   const [selectedVendor, setSelectedVendor] = useState(null);
 
   // Ensure client-side rendering consistency
   useEffect(() => {
@@ -114,52 +125,413 @@ export default function Home() {
     }
   }, [isClient]);
 
-  // Category data with corresponding hero images
+  // Category data with corresponding hero images and vendors
   const categories = [
     {
-      id: 'food',
-      name: 'Food',
-      icon: '🍽️',
-      items: '450 items',
-      heroImage: '/assets/img/hero/1.jpg',
-      bgColor: 'bg-orange-100'
+      id: "Ac's",
+      name: "Ac's Repair",
+     icon: '/assets/img/category/air-conditioner.png',
+    //   items: '450 items',
+      heroImage: '/assets/img/hero/ac.jpg',
+      bgColor: 'bg-orange-100',
+      vendors: [
+        {
+          id: 'restaurant-1',
+          name: 'Cassette Ac',
+          rating: 4.5,
+          deliveryTime: '25-30 mins',
+          image: '/assets/img/vendors/pizza-palace.jpg',
+          category: 'Restaurant',
+          isFavorite: true,
+          distance: '1.2 km',
+          products: [
+            { id: 'p1', name: 'Margherita Pizza', price: 299, image: '/assets/img/product/1.jpg', rating: 4.3 },
+            { id: 'p2', name: 'Pepperoni Pizza', price: 399, image: '/assets/img/product/2.jpg', rating: 4.5 },
+            { id: 'p3', name: 'Veggie Supreme', price: 349, image: '/assets/img/product/3.jpg', rating: 4.2 }
+          ]
+        },
+        {
+          id: 'restaurant-2',
+          name: 'Split AC',
+          rating: 4.2,
+          deliveryTime: '20-25 mins',
+          image: '/assets/img/vendors/burger-hub.jpg',
+          category: 'Fast Food',
+          isFavorite: false,
+          distance: '0.8 km',
+          products: [
+            { id: 'p4', name: 'Classic Burger', price: 199, image: '/assets/img/product/4.jpg', rating: 4.1 },
+            { id: 'p5', name: 'Cheese Burger', price: 249, image: '/assets/img/product/5.jpg', rating: 4.4 },
+            { id: 'p6', name: 'Chicken Burger', price: 279, image: '/assets/img/product/6.jpg', rating: 4.3 }
+          ]
+        },
+        {
+          id: 'restaurant-3',
+          name: 'Window AC 	',
+          rating: 4.7,
+          deliveryTime: '30-35 mins',
+          image: '/assets/img/vendors/spice-garden.jpg',
+          category: 'Indian Cuisine',
+          isFavorite: true,
+          distance: '2.1 km',
+          products: [
+            { id: 'p7', name: 'Butter Chicken', price: 329, image: '/assets/img/product/7.jpg', rating: 4.6 },
+            { id: 'p8', name: 'Biryani Special', price: 279, image: '/assets/img/product/8.jpg', rating: 4.5 },
+            { id: 'p9', name: 'Dal Makhani', price: 199, image: '/assets/img/product/9.jpg', rating: 4.4 }
+          ]
+        }
+      ]
     },
     {
-      id: 'groceries',
-      name: 'Groceries',
-      icon: '🛒',
-      items: '320 items',
-      heroImage: '/assets/img/hero/2.jpg',
-      bgColor: 'bg-green-100'
+      id: 'Computer Repair',
+      name: 'Computer Repair',
+     icon: '/assets/img/category/pc.png',
+    //   items: '320 items',
+      heroImage: '/assets/img/hero/computer.jpg',
+      bgColor: 'bg-green-100',
+      vendors: [
+        {
+          id: 'grocery-1',
+          name: 'Desktop PC',
+          rating: 4.3,
+          deliveryTime: '45-60 mins',
+          image: '/assets/img/vendors/fresh-mart.jpg',
+          category: 'Supermarket',
+          isFavorite: true,
+          distance: '1.5 km',
+          products: [
+            { id: 'g1', name: 'Fresh Apples (1kg)', price: 120, image: '/assets/img/product/10.jpg', rating: 4.2 },
+            { id: 'g2', name: 'Organic Bananas (1kg)', price: 80, image: '/assets/img/product/11.jpg', rating: 4.1 },
+            { id: 'g3', name: 'Fresh Milk (1L)', price: 60, image: '/assets/img/product/12.jpg', rating: 4.4 }
+          ]
+        },
+        {
+          id: 'grocery-2',
+          name: 'Laptop ',
+          rating: 4.6,
+          deliveryTime: '30-45 mins',
+          image: '/assets/img/vendors/green-valley.jpg',
+          category: 'Organic Store',
+          isFavorite: false,
+          distance: '2.3 km',
+          products: [
+            { id: 'g4', name: 'Organic Vegetables Mix', price: 150, image: '/assets/img/product/13.jpg', rating: 4.5 },
+            { id: 'g5', name: 'Brown Rice (5kg)', price: 450, image: '/assets/img/product/14.jpg', rating: 4.3 },
+            { id: 'g6', name: 'Organic Honey', price: 280, image: '/assets/img/product/15.jpg', rating: 4.6 }
+          ]
+        }
+      ]
     },
     {
-      id: 'medicine',
-      name: 'Medicine',
-      icon: '💊',
-      items: '180 items',
-      heroImage: '/assets/img/hero/3.jpg',
-      bgColor: 'bg-blue-100'
+      id: 'Washing Machine Repair',
+      name: 'Washing Machine Repair',
+     icon: '/assets/img/category/washing.png',
+    //   items: '180 items',
+      heroImage: '/assets/img/hero/washing.jpg',
+      bgColor: 'bg-blue-100',
+      vendors: [
+        {
+          id: 'pharmacy-1',
+          name: ' Front Load Washing Machine',
+          rating: 4.8,
+          deliveryTime: '15-20 mins',
+          image: '/assets/img/vendors/healthcare-plus.jpg',
+          category: 'Pharmacy',
+          isFavorite: true,
+          distance: '0.5 km',
+          products: [
+            { id: 'm1', name: 'Paracetamol 500mg', price: 25, image: '/assets/img/product/16.jpg', rating: 4.7 },
+            { id: 'm2', name: 'Vitamin C Tablets', price: 180, image: '/assets/img/product/17.jpg', rating: 4.5 },
+            { id: 'm3', name: 'Hand Sanitizer', price: 120, image: '/assets/img/product/18.jpg', rating: 4.6 }
+          ]
+        },
+        {
+          id: 'pharmacy-2',
+          name: 'Semi-Automatic Washing Machine',
+          rating: 4.4,
+          deliveryTime: '20-25 mins',
+          image: '/assets/img/vendors/mediquick.jpg',
+          category: 'Online Pharmacy',
+          isFavorite: false,
+          distance: '1.8 km',
+          products: [
+            { id: 'm4', name: 'Cough Syrup', price: 95, image: '/assets/img/product/19.jpg', rating: 4.3 },
+            { id: 'm5', name: 'First Aid Kit', price: 350, image: '/assets/img/product/20.jpg', rating: 4.5 },
+            { id: 'm6', name: 'Digital Thermometer', price: 450, image: '/assets/img/product/21.jpg', rating: 4.4 }
+          ]
+        },
+		  {
+          id: 'pharmacy-2',
+          name: 'Top Load Washing Machine',
+          rating: 4.4,
+          deliveryTime: '20-25 mins',
+          image: '/assets/img/vendors/mediquick.jpg',
+          category: 'Online Pharmacy',
+          isFavorite: false,
+          distance: '1.8 km',
+          products: [
+            { id: 'm4', name: 'Cough Syrup', price: 95, image: '/assets/img/product/19.jpg', rating: 4.3 },
+            { id: 'm5', name: 'First Aid Kit', price: 350, image: '/assets/img/product/20.jpg', rating: 4.5 },
+            { id: 'm6', name: 'Digital Thermometer', price: 450, image: '/assets/img/product/21.jpg', rating: 4.4 }
+          ]
+        }
+      ]
     },
     {
-      id: 'home-services',
-      name: 'Services',
-      icon: '🏠',
-      items: '95 items',
-      heroImage: '/assets/img/hero/4.jpg',
-      bgColor: 'bg-purple-100'
+      id: 'Refrigerator Repair',
+      name: 'Refrigerator Repair',
+     icon: '/assets/img/category/refrigerator.png',
+    //   items: '95 items',
+      heroImage: '/assets/img/hero/refrigerator.jpg',
+      bgColor: 'bg-purple-100',
+      vendors: [
+        {
+          id: 'service-1',
+          name: ' Double Door',
+          rating: 4.6,
+          deliveryTime: '2-4 hours',
+          image: '/assets/img/vendors/cleanpro.jpg',
+          category: 'Cleaning',
+          isFavorite: true,
+          distance: '3.2 km',
+          products: [
+            { id: 's1', name: 'House Deep Cleaning', price: 1500, image: '/assets/img/product/22.jpg', rating: 4.7 },
+            { id: 's2', name: 'Kitchen Cleaning', price: 800, image: '/assets/img/product/23.jpg', rating: 4.5 },
+            { id: 's3', name: 'Bathroom Cleaning', price: 600, image: '/assets/img/product/24.jpg', rating: 4.6 }
+          ]
+        },
+        {
+          id: 'service-2',
+          name: 'Single Door',
+          rating: 4.5,
+          deliveryTime: '1-2 hours',
+          image: '/assets/img/vendors/fixit.jpg',
+          category: 'Repair Services',
+          isFavorite: false,
+          distance: '2.7 km',
+          products: [
+            { id: 's4', name: 'AC Repair', price: 500, image: '/assets/img/product/25.jpg', rating: 4.4 },
+            { id: 's5', name: 'Plumbing Service', price: 300, image: '/assets/img/product/26.jpg', rating: 4.6 },
+            { id: 's6', name: 'Electrical Work', price: 400, image: '/assets/img/product/27.jpg', rating: 4.3 }
+          ]
+        },
+		 {
+          id: 'service-2',
+          name: ' Side by Side Door',
+          rating: 4.5,
+          deliveryTime: '1-2 hours',
+          image: '/assets/img/vendors/fixit.jpg',
+          category: 'Repair Services',
+          isFavorite: false,
+          distance: '2.7 km',
+          products: [
+            { id: 's4', name: 'AC Repair', price: 500, image: '/assets/img/product/25.jpg', rating: 4.4 },
+            { id: 's5', name: 'Plumbing Service', price: 300, image: '/assets/img/product/26.jpg', rating: 4.6 },
+            { id: 's6', name: 'Electrical Work', price: 400, image: '/assets/img/product/27.jpg', rating: 4.3 }
+          ]
+        }
+      ]
     },
     {
-      id: 'shop',
-      name: 'Shop',
-      icon: '🛍️',
-      items: '275 items',
-      heroImage: '/assets/img/hero/1.jpg',
-      bgColor: 'bg-pink-100'
+      id: 'LED TV Repair',
+      name: 'LED TV Repair',
+     icon: '/assets/img/category/tv.png',
+    //   items: '275 items',
+      heroImage: '/assets/img/hero/LED1.jpg',
+      bgColor: 'bg-yellow-100',
+      vendors: [
+        {
+          id: 'shop-1',
+          name: 'LED TV',
+          rating: 4.4,
+          deliveryTime: '1-2 days',
+          image: '/assets/img/vendors/fashion-hub.jpg',
+          category: 'Clothing',
+          isFavorite: true,
+          distance: '5.2 km',
+          products: [
+            { id: 'sh1', name: 'Cotton T-Shirt', price: 599, image: '/assets/img/product/28.jpg', rating: 4.3 },
+            { id: 'sh2', name: 'Denim Jeans', price: 1299, image: '/assets/img/product/29.jpg', rating: 4.5 },
+            { id: 'sh3', name: 'Summer Dress', price: 899, image: '/assets/img/product/30.jpg', rating: 4.2 }
+          ]
+        },
+        {
+          id: 'shop-2',
+          name: 'LCD TV',
+          rating: 4.7,
+          deliveryTime: '1-3 days',
+          image: '/assets/img/vendors/techworld.jpg',
+          category: 'Electronics',
+          isFavorite: false,
+          distance: '4.8 km',
+          products: [
+            { id: 'sh4', name: 'Wireless Headphones', price: 2999, image: '/assets/img/product/31.jpg', rating: 4.6 },
+            { id: 'sh5', name: 'Smartphone Case', price: 499, image: '/assets/img/product/32.jpg', rating: 4.4 },
+            { id: 'sh6', name: 'Power Bank', price: 1299, image: '/assets/img/product/33.jpg', rating: 4.5 }
+          ]
+        },
+		 {
+          id: 'shop-2',
+          name: ' TV Installation/Wall Mounting',
+          rating: 4.7,
+          deliveryTime: '1-3 days',
+          image: '/assets/img/vendors/techworld.jpg',
+          category: 'Electronics',
+          isFavorite: false,
+          distance: '4.8 km',
+          products: [
+            { id: 'sh4', name: 'Wireless Headphones', price: 2999, image: '/assets/img/product/31.jpg', rating: 4.6 },
+            { id: 'sh5', name: 'Smartphone Case', price: 499, image: '/assets/img/product/32.jpg', rating: 4.4 },
+            { id: 'sh6', name: 'Power Bank', price: 1299, image: '/assets/img/product/33.jpg', rating: 4.5 }
+          ]
+        },
+		{
+          id: 'shop-2',
+          name: 'Smart Android TV',
+          rating: 4.7,
+          deliveryTime: '1-3 days',
+          image: '/assets/img/vendors/techworld.jpg',
+          category: 'Electronics',
+          isFavorite: false,
+          distance: '4.8 km',
+          products: [
+            { id: 'sh4', name: 'Wireless Headphones', price: 2999, image: '/assets/img/product/31.jpg', rating: 4.6 },
+            { id: 'sh5', name: 'Smartphone Case', price: 499, image: '/assets/img/product/32.jpg', rating: 4.4 },
+            { id: 'sh6', name: 'Power Bank', price: 1299, image: '/assets/img/product/33.jpg', rating: 4.5 }
+          ]
+        }
+      ]
+    },
+	{
+      id: 'Oven Repair',
+      name: 'Oven Repair',
+      icon: '/assets/img/category/oven.png',
+    //   items: '275 items',
+      heroImage: '/assets/img/hero/oven.jpg',
+      bgColor: '#006666',  // darker teal
+      vendors: [
+        {
+          id: 'shop-1',
+          name: ' Conventional Ovens',
+          rating: 4.4,
+          deliveryTime: '1-2 days',
+          image: '/assets/img/vendors/fashion-hub.jpg',
+          category: 'Clothing',
+          isFavorite: true,
+          distance: '5.2 km',
+          products: [
+            { id: 'sh1', name: 'Cotton T-Shirt', price: 599, image: '/assets/img/product/28.jpg', rating: 4.3 },
+            { id: 'sh2', name: 'Denim Jeans', price: 1299, image: '/assets/img/product/29.jpg', rating: 4.5 },
+            { id: 'sh3', name: 'Summer Dress', price: 899, image: '/assets/img/product/30.jpg', rating: 4.2 }
+          ]
+        },
+        {
+          id: 'shop-2',
+          name: 'Microwave Oven',
+          rating: 4.7,
+          deliveryTime: '1-3 days',
+          image: '/assets/img/vendors/techworld.jpg',
+          category: 'Electronics',
+          isFavorite: false,
+          distance: '4.8 km',
+          products: [
+            { id: 'sh4', name: 'Wireless Headphones', price: 2999, image: '/assets/img/product/31.jpg', rating: 4.6 },
+            { id: 'sh5', name: 'Smartphone Case', price: 499, image: '/assets/img/product/32.jpg', rating: 4.4 },
+            { id: 'sh6', name: 'Power Bank', price: 1299, image: '/assets/img/product/33.jpg', rating: 4.5 }
+          ]
+        },
+		
+      ]
+    },
+	{
+      id: 'Geyser Repair',
+      name: 'Geyser Repair',
+     icon: '/assets/img/category/geyser.png',
+    //   items: '275 items',
+      heroImage: '/assets/img/hero/geyser.jpg',
+      bgColor: 'bg-blue-100',
+      vendors: [
+        {
+          id: 'shop-1',
+          name: 'Electric Geyser',
+          rating: 4.4,
+          deliveryTime: '1-2 days',
+          image: '/assets/img/vendors/fashion-hub.jpg',
+          category: 'Clothing',
+          isFavorite: true,
+          distance: '5.2 km',
+          products: [
+            { id: 'sh1', name: 'Cotton T-Shirt', price: 599, image: '/assets/img/product/19.jpg', rating: 4.3 },
+            { id: 'sh2', name: 'Denim Jeans', price: 1299, image: '/assets/img/product/20.jpg', rating: 4.5 },
+            { id: 'sh3', name: 'Summer Dress', price: 899, image: '/assets/img/product/21.jpg', rating: 4.2 }
+          ]
+        },
+        {
+          id: 'shop-2',
+          name: 'Instant Geyser',
+          rating: 4.7,
+          deliveryTime: '1-3 days',
+          image: '/assets/img/vendors/techworld.jpg',
+          category: 'Electronics',
+          isFavorite: false,
+          distance: '4.8 km',
+          products: [
+            { id: 'sh4', name: 'Wireless Headphones', price: 2999, image: '/assets/img/product/19.jpg', rating: 4.6 },
+            { id: 'sh5', name: 'Smartphone Case', price: 499, image: '/assets/img/product/20.jpg', rating: 4.4 },
+            { id: 'sh6', name: 'Power Bank', price: 1299, image: '/assets/img/product/21.jpg', rating: 4.5 }
+          ]
+        }
+      ]
     }
   ];
 
+  // State for vendor system
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedVendor, setSelectedVendor] = useState(null);
+  const [showVendors, setShowVendors] = useState(false);
+  const [showProducts, setShowProducts] = useState(false);
+  const [favoriteVendors, setFavoriteVendors] = useState([]);
+
+  // Handle category selection
+  const handleCategoryClick = (category) => {
+    setSelectedCategory(category);
+    setSelectedVendor(null);
+    setShowVendors(true);
+    setShowProducts(false);
+  };
+
+  // Handle vendor selection
+  const handleVendorClick = (vendor) => {
+    setSelectedVendor(vendor);
+    setShowProducts(true);
+  };
+
+  // Toggle favorite vendor
+  const toggleFavoriteVendor = (vendorId) => {
+    setFavoriteVendors(prev => 
+      prev.includes(vendorId) 
+        ? prev.filter(id => id !== vendorId)
+        : [...prev, vendorId]
+    );
+  };
+
+  // Get nearby vendors (favorites first)
+  const getNearbyVendors = (categoryVendors) => {
+    return categoryVendors.sort((a, b) => {
+      if (a.isFavorite && !b.isFavorite) return -1;
+      if (!a.isFavorite && b.isFavorite) return 1;
+      return parseFloat(a.distance) - parseFloat(b.distance);
+    });
+  };
+
+  	   const [openCategoryId, setOpenCategoryId] = useState(null);
+
+
   return (
     <>
+      <Head>
+        <link rel="stylesheet" href="/assets/css/vendor-styles.css" />
+      </Head>
       <Header />
 
       <main className="wrapper sb-default">
@@ -176,199 +548,167 @@ export default function Home() {
         {/* Sidebar */}
         <div className="mn-sidebar-overlay"></div>
         <div className="mn-sidebar">
-          <div className="mn-sidebar-body">
-            <button type="button" className="side-close" title="Close"></button>
-            <ul className="mn-sb-list">
-              <li className="mn-sb-title condense"><span>Food</span></li>
-              <li className="mn-sb-item sb-drop-item">
-                <a href="#" className="mn-drop-toggle">
-                  <img src="/assets/img/icons/clothes-2.svg" alt="clothes" />
-                  <span className="condense">
-                    Restaurant Food<i className="drop-arrow ri-arrow-down-s-line"></i>
-                  </span>
-                </a>
-                <ul className="mn-sb-drop">
-                  <li className="list">
-                    <a href="#" className="mn-page-Link drop">Pizza</a>
-                  </li>
-                  <li className="list">
-								<Link href="/shop-right-sidebar" className="mn-page-Link drop"><span>Shirts</span></Link>
-							</li>
-							<li className="list">
-								<Link href="/shop-right-sidebar" className="mn-page-Link drop"><span>gowns</span></Link>
-							</li>
-							<li className="list">
-								<Link href="/shop-right-sidebar" className="mn-page-Link drop"><span>Dresses</span></Link>
-							</li>
-							<li className="list">
-								<Link href="/shop-right-sidebar" className="mn-page-Link drop"><span>sharees</span></Link>
-							</li>
-							<li className="list">
-								<Link href="/shop-right-sidebar" className="mn-page-Link drop"><span>jeans</span></Link>
-							</li>
-                </ul>
-              </li>
-             					<li className="mn-sb-item sb-drop-item">
-						<Link href="/shop-right-sidebar" className="mn-drop-toggle">
-							<img src="assets/img/icons/shoes.svg" alt="clothes"/>
-							<span className="condense">Shoes</span>
-						</Link>
-					</li>
-					<li className="mn-sb-item sb-drop-item">
-						<Link href="/shop-right-sidebar" className="mn-drop-toggle">
-							<img src="assets/img/icons/glasses.svg" alt="glasses"/>
-							<span className="condense">glasses</span>
-						</Link>
-					</li>
-					<li className="mn-sb-item sb-drop-item">
-						<a href="#" onClick={(e) => e.preventDefault()} className="mn-drop-toggle">
-							<img src="assets/img/icons/bag.svg" alt="bag"/>
-							<span className="condense">Bags<i className="drop-arrow ri-arrow-down-s-line"></i></span>
-						</a>
-						<ul className="mn-sb-drop">
-							<li className="list">
-								<Link href="/shop-right-sidebar" className="mn-page-Link drop">Purse</Link>
-							</li>
-							<li className="list">
-								<Link href="/shop-right-sidebar" className="mn-page-Link drop">Bags</Link>
-							</li>
-							<li className="list">
-								<Link href="/shop-right-sidebar" className="mn-page-Link drop">wallet</Link>
-							</li>
-						</ul>
-					</li>
-					<li className="mn-sb-item sb-drop-item">
-						<Link href="/shop-right-sidebar" className="mn-drop-toggle">
-							<img src="assets/img/icons/hat.svg" alt="hat"/>
-							<span className="condense">Hat</span>
-						</Link>
-					</li>
-					<li className="mn-sb-item sb-drop-item">
-						<a href="#" onClick={(e) => e.preventDefault()} className="mn-drop-toggle">
-							<img src="assets/img/icons/makeup.svg" alt="makeup"/>
-							<span className="condense">Makeup<i className="drop-arrow ri-arrow-down-s-line"></i></span>
-						</a>
-						<ul className="mn-sb-drop">
-							<li className="list">
-								<Link href="/shop-right-sidebar" className="mn-page-Link drop">Lipstick</Link>
-							</li>
-							<li className="list">
-								<Link href="/shop-right-sidebar" className="mn-page-Link drop">eye liner</Link>
-							</li>
-							<li className="list">
-								<Link href="/shop-right-sidebar" className="mn-page-Link drop">nail paint</Link>
-							</li>
-							<li className="list">
-								<Link href="/shop-right-sidebar" className="mn-page-Link drop">Makeup kit</Link>
-							</li>
-						</ul>
-					</li>
-					<li className="mn-sb-item sb-drop-item">
-						<a href="#" onClick={(e) => e.preventDefault()} className="mn-drop-toggle">
-							<img src="assets/img/icons/cosmetics.svg" alt="cosmetics"/>
-							<span className="condense">Cosmetics<i className="drop-arrow ri-arrow-down-s-line"></i></span>
-						</a>
-						<ul className="mn-sb-drop">
-							<li className="list">
-								<Link href="/shop-right-sidebar" className="mn-page-Link drop">Shampoo</Link>
-							</li>
-							<li className="list">
-								<Link href="/shop-right-sidebar" className="mn-page-Link drop">face wash</Link>
-							</li>
-							<li className="list">
-								<Link href="/shop-right-sidebar" className="mn-page-Link drop">body wash</Link>
-							</li>
-							<li className="list">
-								<Link href="/shop-right-sidebar" className="mn-page-Link drop">sunscreen</Link>
-							</li>
-							<li className="list">
-								<Link href="/shop-right-sidebar" className="mn-page-Link drop">serum</Link>
-							</li>
-						</ul>
-					</li>
-					<li className="mn-sb-title condense"><span>Groceries</span></li>
-					<li className="mn-sb-item sb-drop-item">
-						<a href="#" onClick={(e) => e.preventDefault()} className="mn-drop-toggle">
-							<img src="assets/img/icons/cake.svg" alt="Cake"/>
-							<span className="condense">Cake<i className="drop-arrow ri-arrow-down-s-line"></i></span>
-						</a>
-						<ul className="mn-sb-drop">
-							<li className="list">
-								<Link href="/shop-right-sidebar" className="mn-page-Link drop">cup cake</Link>
-							</li>
-							<li className="list">
-								<Link href="/shop-right-sidebar" className="mn-page-Link drop">pastry</Link>
-							</li>
-							<li className="list">
-								<Link href="/shop-right-sidebar" className="mn-page-Link drop">Cake</Link>
-							</li>
-						</ul>
-					</li>
-					<li className="mn-sb-item sb-drop-item">
-						<Link href="shop-right-sidebar" className="mn-drop-toggle">
-							<img src="assets/img/icons/bread.svg" alt="Bread"/>
-							<span className="condense">Bread</span>
-						</Link>
-					</li>
-					<li className="mn-sb-title condense"><span>Medicine</span></li>
-					<li className="mn-sb-item sb-drop-item">
-						<a href="#" onClick={(e) => e.preventDefault()} className="mn-drop-toggle">
-							<img src="assets/img/icons/tuber.svg" alt="tuber"/>
-							<span className="condense">tuber root<i className="drop-arrow ri-arrow-down-s-line"></i></span>
-						</a>
-						<ul className="mn-sb-drop">
-							<li className="list">
-								<Link href="/shop-right-sidebar" className="mn-page-Link drop">Sweet Potato</Link>
-							</li>
-							<li className="list">
-								<Link href="/shop-right-sidebar" className="mn-page-Link drop">Ginger</Link>
-							</li>
-							<li className="list">
-								<Link href="/shop-right-sidebar" className="mn-page-Link drop">cassava</Link>
-							</li>
-						</ul>
-					</li>
-					<li className="mn-sb-item sb-drop-item">
-						<Link href="/shop-right-sidebar" className="mn-drop-toggle">
-							<img src="assets/img/icons/tomato.svg" alt="tomato"/>
-							<span className="condense">Tomato</span>
-						</Link>
-					</li>
-					<li className="mn-sb-item sb-drop-item">
-						<Link href="/shop-right-sidebar" className="mn-drop-toggle">
-							<img src="assets/img/icons/lemon.svg" alt="lemon"/>
-							<span className="condense">Lemon</span>
-						</Link>
-					</li>
-					<li className="mn-sb-title condense"><span>Home Services</span></li>
-					<li className="mn-sb-item sb-drop-item">
-						<Link href="/shop-right-sidebar" className="mn-drop-toggle">
-							<img src="assets/img/icons/avocado.svg" alt="avocado"/>
-							<span className="condense">avocado</span>
-						</Link>
-					</li>
-					<li className="mn-sb-item sb-drop-item">
-						<Link href="/shop-right-sidebar" className="mn-drop-toggle">
-							<img src="assets/img/icons/strawberry.svg" alt="strawberry"/>
-							<span className="condense">strawberry</span>
-						</Link>
-					</li>
-					<li className="mn-sb-item sb-drop-item">
-						<Link href="/shop-right-sidebar" className="mn-drop-toggle">
-							<img src="assets/img/icons/cherry.svg" alt="cherry"/>
-							<span className="condense">cherry</span>
-						</Link>
-					</li>
-					<li className="mn-sb-item sb-drop-item">
-						<Link href="/shop-right-sidebar" className="mn-drop-toggle">
-							<img src="assets/img/icons/lychee.svg" alt="Lychee"/>
-							<span className="condense">Lychee</span>
-						</Link>
-					</li>
+  <div className="mn-sidebar-body">
+    <button type="button" className="side-close" title="Close"></button>
+    <ul className="mn-sb-list">
+      {/* -------- Vendor Categories -------- */}
+      {categories.map((category, index) => (
+        <li key={category.id} className="mn-sb-item sb-drop-item">
+          {/* Category Header */}
+          <a
+            href="#"
+            className="mn-drop-toggle"
+            onClick={(e) => {
+              e.preventDefault();
+              handleCategoryClick();
+            }}
+          >
+            <span className="category-icon-sidebar">
+<span className="category-icon-sidebar">
+  <img src={category.icon} alt={category.name} width={40} height={40} />
+</span>
+            </span>
+            <span className="condense" style={{ color: '#12b0a0', paddingLeft:'1rem' }}>
+              {category.id}
+              <i className="drop-arrow ri-arrow-down-s-line"></i>
+            </span>
+          </a>
 
+          {/* Dropdown Vendors */}
+          {category.vendors?.length > 0 && (
+            <ul className="mn-sb-drop">
+              {category.vendors.map((vendor) => (
+                <li key={vendor.id} className="list">
+                  <a
+                    href="#"
+                    className="mn-page-Link drop"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setSelectedCategory(category);
+                      handleVendorClick(vendor);
+                    }}
+                  >
+                    {vendor.name}
+                    {vendor.isFavorite && (
+                      <i className="ri-heart-fill text-danger ms-1"></i>
+                    )}
+                  </a>
+                </li>
+              ))}
             </ul>
-          </div>
-        </div>
+          )}
+        </li>
+      ))}
+
+      {/* -------- Quick Links -------- */}
+     <li className="mn-sb-title condense">
+  <span>Quick Links</span>
+</li>
+
+<li className="mn-sb-item sb-drop-item">
+  {/* Toggle Button */}
+  <div
+    className="mn-drop-toggle"
+    onClick={(e) => {
+      e.preventDefault();
+      setOpenCategoryId(openCategoryId === "quick-links" ? null : "quick-links");
+    }}
+    role="button"
+    aria-expanded={openCategoryId === "quick-links"}
+    aria-controls="submenu-quick-links"
+  >
+    <img src="/assets/img/icons/clothes-2.svg" alt="clothes" />
+    <span className="condense">
+      More INFO
+      <i
+        className={`drop-arrow ri-arrow-down-s-line ${
+          openCategoryId === "quick-links" ? "rotate-180" : ""
+        }`}
+      ></i>
+    </span>
+  </div>
+
+  {/* Dropdown Items */}
+  <ul
+    id="submenu-quick-links"
+    className={`mn-sb-drop ${openCategoryId === "quick-links" ? "open" : ""}`}
+  >
+    <li className="list">
+      <Link href="/shop-right-sidebar" className="mn-page-Link drop">
+        <span>About Us</span>
+      </Link>
+    </li>
+    <li className="list">
+      <Link href="/shop-right-sidebar" className="mn-page-Link drop">
+        <span>Contact Us</span>
+      </Link>
+    </li>
+    <li className="list">
+      <Link href="/shop-right-sidebar" className="mn-page-Link drop">
+	<span>Terms & Conditions</span>
+      </Link>
+    </li>
+    <li className="list">
+      <Link href="/shop-right-sidebar" className="mn-page-Link drop">
+        <span>Best Sellers</span>
+      </Link>
+    </li>
+    <li className="list">
+      <Link href="/shop-right-sidebar" className="mn-page-Link drop">
+        <span>On Sale</span>
+      </Link>
+    </li>
+  </ul>
+</li>
+
+
+      {/* -------- Groceries -------- */}
+      <li className="mn-sb-item sb-drop-item">
+        <a href="#" className="mn-drop-toggle">
+          <span className="category-icon-sidebar">🛒</span>
+          <span className="condense" style={{ color: '#12b0a0' }}>
+            Groceries
+            <i className="drop-arrow ri-arrow-down-s-line"></i>
+          </span>
+        </a>
+        <ul className="mn-sb-drop">
+          <li>
+            <a href="#" className="mn-page-Link">Fruits</a>
+          </li>
+          <li>
+            <a href="#" className="mn-page-Link">Vegetables</a>
+          </li>
+          <li>
+            <a href="#" className="mn-page-Link">Dairy</a>
+          </li>
+        </ul>
+      </li>
+
+      {/* -------- Medicine -------- */}
+      <li className="mn-sb-item sb-drop-item">
+        <a href="#" className="mn-drop-toggle">
+          <span className="category-icon-sidebar">💊</span>
+          <span className="condense" style={{ color: '#12b0a0' }}>
+            Medicine
+            <i className="drop-arrow ri-arrow-down-s-line"></i>
+          </span>
+        </a>
+        <ul className="mn-sb-drop">
+          <li>
+            <a href="#" className="mn-page-Link">Prescription</a>
+          </li>
+          <li>
+            <a href="#" className="mn-page-Link">OTC</a>
+          </li>
+          <li>
+            <a href="#" className="mn-page-Link">Wellness</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+
 
         {/* Main content from index.html */}
 	<div className="mn-main-content">
@@ -440,18 +780,36 @@ export default function Home() {
 									<div className="hero-text-section">
 										<div className="hero-text-content">
 											<h1 className="hero-title">
-												Discover
+												We Bring Your 
 												<br />
-												<span className="hero-title-highlight">Everything</span>
+												<span className="hero-title-highlight">Home Appliances</span>
+												Back to Life
 											</h1>
 											<p className="hero-subtitle">
-												Food, Groceries, Medicine, Home Services & Shopping - 
-												All in one place with quality and convenience.
+											 We are Committed to Provide you a Safe Service Experience
 											</p>
-											<button className="hero-cta-btn">
-												<span>Explore Now</span>
-												<i className="ri-arrow-right-line"></i>
-											</button>
+<button className="hero-cta-btn">
+  <img
+    src="/assets/img/icons/app-store.png"
+    width={129}        // correct JSX syntax
+    style={{ height: 'auto' }}
+    alt="App Store logo"
+  />
+</button>
+
+<button
+  className="hero-cta-btn"
+  style={{ marginLeft: '20px' }} // add gap
+>
+  <img
+    src="/assets/img/icons/play-store.png"
+    width={129}        // optional: keep consistent size
+    style={{ height: 'auto' }}
+    alt="Play Store logo"
+  />
+</button>
+
+
 										</div>
 									</div>
 
@@ -463,10 +821,10 @@ export default function Home() {
 													key={category.id}
 													className={`category-card ${category.bgColor}`}
 													onMouseEnter={isClient ? () => setHeroImage(category.heroImage) : undefined}
-													onMouseLeave={isClient ? () => setHeroImage('/assets/img/hero/1.jpg') : undefined}
+													onMouseLeave={isClient ? () => setHeroImage('/assets/img/hero/handyman-service-icon.jpg') : undefined}
 												>
 													<div className="category-icon">
-														<span>{category.icon}</span>
+<img src={category.icon} alt={category.name} width={50} height={50} />
 													</div>
 													<div className="category-info">
 														<h4 className="category-name">{category.name}</h4>
@@ -482,100 +840,226 @@ export default function Home() {
 					</section>
 
 					{/* <!-- Category Section --> */}
-					<section className="mn-category p-tb-15">
-						<div className="mn-cat owl-carousel">
-							<div className="mn-cat-card cat-card-1">
-								<p className="lbl"><span>40%</span></p>
-								<span className="bg">40%</span>
-								<h4>Fresh</h4>
-								<h3>Food</h3>
-								<p>Items (450)</p>
-								<ul>
-									<li><a href="#" onClick={(e) => e.preventDefault()}><img src="/assets/img/category/1.jpg"
-												alt="category"/></a></li>
-									<li><a href="#" onClick={(e) => e.preventDefault()}><img src="/assets/img/category/2.jpg"
-												alt="category"/></a></li>
-									<li><a href="#" onClick={(e) => e.preventDefault()}><img src="/assets/img/category/3.jpg"
-												alt="category"/></a></li>
-								</ul>
+				<section className="mn-category p-tb-15">
+  <div className="mn-cat owl-carousel">
+    {categories.map((category, index) => (
+      <div 
+        key={category.id}
+        className={`mn-cat-card cat-card-${index + 1} cursor-pointer`}
+        onClick={() => handleCategoryClick(category)}
+      >
+        {/* Put p, h4, span in one row */}
+      <div
+  style={{
+    display: 'flex',
+    alignItems: 'center',
+    gap: '6px',  // space between p, h4, span
+  }}
+>
+  <p
+    className="lbl"
+    style={{ margin: 0 }}
+  >
+    {40 - index * 5}%
+  </p>
+
+  <h4
+    style={{ margin: 0 }}
+  >
+    {category.id === 'food'
+      ? 'Fresh'
+      : category.id === 'groceries'
+      ? 'Daily'
+      : category.id === 'medicine'
+      ? 'Health'
+      : category.id === 'home-services'
+      ? 'Professional'
+      : 'On-Demand Home Services'}
+  </h4>
+
+  <span
+    className="bg"
+    style={{ margin: 0 }}
+  >
+    {40 - index * 5}%
+  </span>
+</div>
+
+
+        <h3>{category.name}</h3>
+        <p>{category.items}</p>
+
+        <ul className="flex gap-2">
+          <li>
+            <a href="#" onClick={(e) => e.preventDefault()}>
+              <img src={`/assets/img/category/${index * 3 + 1}.jpg`} alt="category" />
+            </a>
+          </li>
+          <li>
+            <a href="#" onClick={(e) => e.preventDefault()}>
+              <img src={`/assets/img/category/${index * 3 + 2}.jpg`} alt="category" />
+            </a>
+          </li>
+          <li>
+            <a href="#" onClick={(e) => e.preventDefault()}>
+              <img src={`/assets/img/category/${index * 3 + 3}.jpg`} alt="category" />
+            </a>
+          </li>
+        </ul>
+      </div>
+	
+    ))}
+  </div>
+  
+</section>
+
+
+					{/* Vendor Selection Section */}
+					{showVendors && selectedCategory && (
+						<section className="mn-vendors p-tb-30">
+							<div className="mn-title">
+								<h2>Nearby <span>{selectedCategory.name}</span> Stores</h2>
+								<p>Choose from top-rated vendors near you</p>
 							</div>
-							<div className="mn-cat-card cat-card-2">
-								<p className="lbl"><span>30%</span></p>
-								<span className="bg">30%</span>
-								<h4>Daily</h4>
-								<h3>Groceries</h3>
-								<p>Items (320)</p>
-								<ul>
-									<li><a href="#" onClick={(e) => e.preventDefault()}><img src="/assets/img/category/4.jpg"
-												alt="category"/></a></li>
-									<li><a href="#" onClick={(e) => e.preventDefault()}><img src="/assets/img/category/5.jpg"
-												alt="category"/></a></li>
-									<li><a href="#" onClick={(e) => e.preventDefault()}><img src="/assets/img/category/6.jpg"
-												alt="category"/></a></li>
-								</ul>
+							<div className="row">
+								{getNearbyVendors(selectedCategory.vendors).map((vendor) => (
+									<div key={vendor.id} className="col-lg-4 col-md-6 col-sm-12 mb-4">
+										<div 
+											className="vendor-card cursor-pointer"
+											onClick={() => handleVendorClick(vendor)}
+										>
+											<div className="vendor-image">
+												<img src={vendor.image} alt={vendor.name} />
+												{vendor.isFavorite && (
+													<div className="favorite-badge">
+														<i className="ri-heart-fill"></i>
+													</div>
+												)}
+											</div>
+											<div className="vendor-info">
+												<div className="vendor-header">
+													<h4>{vendor.name}</h4>
+													<div className="vendor-rating">
+														<i className="ri-star-fill"></i>
+														<span>{vendor.rating}</span>
+													</div>
+												</div>
+												<p className="vendor-category">{vendor.category}</p>
+												<div className="vendor-details">
+													<span className="delivery-time">
+														<i className="ri-time-line"></i>
+														{vendor.deliveryTime}
+													</span>
+													<span className="distance">
+														<i className="ri-map-pin-line"></i>
+														{vendor.distance}
+													</span>
+												</div>
+											</div>
+										</div>
+									</div>
+								))}
 							</div>
-							<div className="mn-cat-card cat-card-3">
-								<p className="lbl"><span>25%</span></p>
-								<span className="bg">25%</span>
-								<h4>Health</h4>
-								<h3>Medicine</h3>
-								<p>Items (180)</p>
-								<ul>
-									<li><a href="#" onClick={(e) => e.preventDefault()}><img src="/assets/img/category/7.jpg"
-												alt="category"/></a></li>
-									<li><a href="#" onClick={(e) => e.preventDefault()}><img src="/assets/img/category/8.jpg"
-												alt="category"/></a></li>
-									<li><a href="#" onClick={(e) => e.preventDefault()}><img src="/assets/img/category/9.jpg"
-												alt="category"/></a></li>
-								</ul>
+							<div className="text-center mt-4">
+								<button 
+									className="btn btn-secondary"
+									onClick={() => {
+										setShowVendors(false);
+										setSelectedCategory(null);
+									}}
+								>
+									Back to Categories
+								</button>
 							</div>
-							<div className="mn-cat-card cat-card-4">
-								<p className="lbl"><span>35%</span></p>
-								<span className="bg">35%</span>
-								<h4>Professional</h4>
-								<h3>Home Services</h3>
-								<p>Items (95)</p>
-								<ul>
-									<li><a href="#" onClick={(e) => e.preventDefault()}><img src="/assets/img/category/10.jpg"
-												alt="category"/></a></li>
-									<li><a href="#" onClick={(e) => e.preventDefault()}><img src="/assets/img/category/11.jpg"
-												alt="category"/></a></li>
-									<li><a href="#" onClick={(e) => e.preventDefault()}><img src="/assets/img/category/12.jpg"
-												alt="category"/></a></li>
-								</ul>
+						</section>
+					)}
+
+					{/* Products Section */}
+					{showProducts && selectedVendor && (
+						<section className="mn-vendor-products p-tb-30">
+							<div className="mn-title">
+								<h2>Products from <span>{selectedVendor.name}</span></h2>
+								<div className="vendor-summary">
+									<span className="rating">
+										<i className="ri-star-fill"></i>
+										{selectedVendor.rating}
+									</span>
+									<span className="delivery">
+										<i className="ri-time-line"></i>
+										{selectedVendor.deliveryTime}
+									</span>
+									<span className="distance">
+										<i className="ri-map-pin-line"></i>
+										{selectedVendor.distance}
+									</span>
+								</div>
 							</div>
-							<div className="mn-cat-card cat-card-5">
-								<p className="lbl"><span>50%</span></p>
-								<span className="bg">50%</span>
-								<h4>Online</h4>
-								<h3>Shop</h3>
-								<p>Items (275)</p>
-								<ul>
-									<li><a href="#" onClick={(e) => e.preventDefault()}><img src="/assets/img/category/13.jpg"
-												alt="category"/></a></li>
-									<li><a href="#" onClick={(e) => e.preventDefault()}><img src="/assets/img/category/14.jpg"
-												alt="category"/></a></li>
-									<li><a href="#" onClick={(e) => e.preventDefault()}><img src="/assets/img/category/15.jpg"
-												alt="category"/></a></li>
-								</ul>
+							<div className="row">
+								{selectedVendor.products.map((product) => (
+									<div key={product.id} className="col-lg-4 col-md-6 col-sm-12 mb-4">
+										<div className="mn-product-card">
+											<div className="mn-product-img">
+												<div className="mn-img">
+													<Link href={`/product-detail?id=${product.id}&vendor=${selectedVendor.id}`} className="image">
+														<img className="main-img" src={product.image} alt={product.name}/>
+													</Link>
+													<div className="mn-pro-loader"></div>
+													<div className="mn-options">
+														<ul>
+															<li><a href="#" onClick={(e) => e.preventDefault()} data-tooltip title="Quick View"
+																	data-link-action="quickview" data-bs-toggle="modal"
+																	data-bs-target="#quickview_modal">
+																	<i className="ri-eye-line"></i></a></li>
+															<li><a href="#" onClick={(e) => e.preventDefault()} data-tooltip title="Compare"
+																	className="mn-compare"><i className="ri-repeat-line"></i></a></li>
+															<li><a href="#" onClick={(e) => e.preventDefault()} data-tooltip title="Add To Cart"
+																	className="mn-add-cart"><i className="ri-shopping-cart-line"></i></a>
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+											<div className="mn-product-detail">
+												<div className="cat">
+													<span>{selectedVendor.category}</span>
+												</div>
+												<h5><Link href={`/product-detail?id=${product.id}&vendor=${selectedVendor.id}`}>{product.name}</Link></h5>
+												<div className="mn-price">
+													<div className="mn-price-new">₹{product.price}</div>
+												</div>
+												<div className="product-rating">
+													<i className="ri-star-fill"></i>
+													<span>{product.rating}</span>
+												</div>
+											</div>
+										</div>
+									</div>
+								))}
 							</div>
-							<div className="mn-cat-card cat-card-6">
-								<p className="lbl"><span>23%</span></p>
-								<span className="bg">23%</span>
-								<h4>Quality</h4>
-								<h3>Services</h3>
-								<p>Items (150)</p>
-								<ul>
-									<li><a href="#" onClick={(e) => e.preventDefault()}><img src="/assets/img/category/16.jpg"
-												alt="category"/></a></li>
-									<li><a href="#" onClick={(e) => e.preventDefault()}><img src="/assets/img/category/17.jpg"
-												alt="category"/></a></li>
-									<li><a href="#" onClick={(e) => e.preventDefault()}><img src="/assets/img/category/18.jpg"
-												alt="category"/></a></li>
-								</ul>
+							<div className="text-center mt-4">
+								<button 
+									className="btn btn-secondary me-3"
+									onClick={() => {
+										setShowProducts(false);
+										setSelectedVendor(null);
+									}}
+								>
+									Back to Vendors
+								</button>
+								<button 
+									className="btn btn-outline-secondary"
+									onClick={() => {
+										setShowProducts(false);
+										setShowVendors(false);
+										setSelectedVendor(null);
+										setSelectedCategory(null);
+									}}
+								>
+									Back to Categories
+								</button>
 							</div>
-						</div>
-					</section>
+						</section>
+					)}
 
 					{/* <!-- New Section - Products --> */}
 					<section className="mn-new-product p-tb-15">
@@ -597,7 +1081,7 @@ export default function Home() {
 										<div className="mn-options">
 											<ul>
 												<li><a href="#" onClick={(e) => e.preventDefault()} data-tooltip title="Quick View"
-														data-Link-action="quickview" data-bs-toggle="modal"
+														data-link-action="quickview" data-bs-toggle="modal"
 														data-bs-target="#quickview_modal">
 														<i className="ri-eye-line"></i></a></li>
 												<li><a href="#" onClick={(e) => e.preventDefault()} data-tooltip title="Compare"
@@ -630,13 +1114,13 @@ export default function Home() {
 														data-src="assets/img/product/5.jpg"
 														data-src-hover="assets/img/product/5.jpg"
 														data-tooltip="Gray"><span
-															style={{"background-image": "url('assets/img/product/bg/5.jpg')"}}></span></a>
+															style={{"backgroundImage": "url('assets/img/product/bg/5.jpg')"}}></span></a>
 												</li>
 												<li><a href="#" className="mn-opt-clr-img"
 														data-src="assets/img/product/6.jpg"
 														data-src-hover="assets/img/product/6.jpg"
 														data-tooltip="Orange"><span
-															style={{"background-image": "url('assets/img/product/bg/6.jpg')"}}></span></a>
+															style={{"backgroundImage": "url('assets/img/product/bg/6.jpg')"}}></span></a>
 												</li>
 												<li><a href="#" className="mn-opt-clr-img"
 														data-src="assets/img/product/7.jpg"
@@ -728,7 +1212,7 @@ export default function Home() {
 										<div className="mn-options">
 											<ul>
 												<li><a href="#" onClick={(e) => e.preventDefault()} data-tooltip title="Quick View"
-														data-Link-action="quickview" data-bs-toggle="modal"
+														data-link-action="quickview" data-bs-toggle="modal"
 														data-bs-target="#quickview_modal"><i
 															className="ri-eye-line"></i></a></li>
 												<li><a href="#" onClick={(e) => e.preventDefault()} data-tooltip title="Compare"
@@ -788,7 +1272,7 @@ export default function Home() {
 										<div className="mn-options">
 											<ul>
 												<li><a href="#" onClick={(e) => e.preventDefault()} data-tooltip title="Quick View"
-														data-Link-action="quickview" data-bs-toggle="modal"
+														data-link-action="quickview" data-bs-toggle="modal"
 														data-bs-target="#quickview_modal"><i
 															className="ri-eye-line"></i></a></li>
 												<li><a href="#" onClick={(e) => e.preventDefault()} data-tooltip title="Compare"
@@ -844,7 +1328,7 @@ export default function Home() {
 										<div className="mn-options">
 											<ul>
 												<li><a href="#" onClick={(e) => e.preventDefault()} data-tooltip title="Quick View"
-														data-Link-action="quickview" data-bs-toggle="modal"
+														data-link-action="quickview" data-bs-toggle="modal"
 														data-bs-target="#quickview_modal"><i
 															className="ri-eye-line"></i></a></li>
 												<li><a href="#" onClick={(e) => e.preventDefault()} data-tooltip title="Compare"
@@ -897,7 +1381,7 @@ export default function Home() {
 										<div className="mn-options">
 											<ul>
 												<li><a href="#" onClick={(e) => e.preventDefault()} data-tooltip title="Quick View"
-														data-Link-action="quickview" data-bs-toggle="modal"
+														data-link-action="quickview" data-bs-toggle="modal"
 														data-bs-target="#quickview_modal"><i
 															className="ri-eye-line"></i></a></li>
 												<li><a href="#" onClick={(e) => e.preventDefault()} data-tooltip title="Compare"
@@ -1120,7 +1604,7 @@ export default function Home() {
 										<div className="mn-options">
 											<ul>
 												<li><a href="#" onClick={(e) => e.preventDefault()} data-tooltip title="Quick View"
-														data-Link-action="quickview" data-bs-toggle="modal"
+														data-link-action="quickview" data-bs-toggle="modal"
 														data-bs-target="#quickview_modal"><i
 															className="ri-eye-line"></i></a></li>
 												<li><a href="#" onClick={(e) => e.preventDefault()} data-tooltip title="Compare"
@@ -1186,7 +1670,7 @@ export default function Home() {
 										<div className="mn-options">
 											<ul>
 												<li><a href="#" onClick={(e) => e.preventDefault()} data-tooltip title="Quick View"
-														data-Link-action="quickview" data-bs-toggle="modal"
+														data-link-action="quickview" data-bs-toggle="modal"
 														data-bs-target="#quickview_modal"><i
 															className="ri-eye-line"></i></a></li>
 												<li><a href="#" onClick={(e) => e.preventDefault()} data-tooltip title="Compare"
@@ -1248,7 +1732,7 @@ export default function Home() {
 										<div className="mn-options">
 											<ul>
 												<li><a href="#" onClick={(e) => e.preventDefault()} data-tooltip title="Quick View"
-														data-Link-action="quickview" data-bs-toggle="modal"
+														data-link-action="quickview" data-bs-toggle="modal"
 														data-bs-target="#quickview_modal"><i
 															className="ri-eye-line"></i></a></li>
 												<li><a href="#" onClick={(e) => e.preventDefault()} data-tooltip title="Compare"
@@ -1281,13 +1765,13 @@ export default function Home() {
 														data-src="assets/img/product/5.jpg"
 														data-src-hover="assets/img/product/5.jpg"
 														data-tooltip="Gray"><span
-															style={{"background-image": "url('assets/img/product/bg/5.jpg')"}}></span></a>
+															style={{"backgroundImage": "url('assets/img/product/bg/5.jpg')"}}></span></a>
 												</li>
 												<li><a href="#" className="mn-opt-clr-img"
 														data-src="assets/img/product/6.jpg"
 														data-src-hover="assets/img/product/6.jpg"
 														data-tooltip="Orange"><span
-															style={{"background-image": "url('assets/img/product/bg/6.jpg')"}}></span></a>
+															style={{"backgroundImage": "url('assets/img/product/bg/6.jpg')"}}></span></a>
 												</li>
 												<li><a href="#" className="mn-opt-clr-img"
 														data-src="assets/img/product/7.jpg"
@@ -1318,7 +1802,7 @@ export default function Home() {
 										<div className="mn-options">
 											<ul>
 												<li><a href="#" onClick={(e) => e.preventDefault()} data-tooltip title="Quick View"
-														data-Link-action="quickview" data-bs-toggle="modal"
+														data-link-action="quickview" data-bs-toggle="modal"
 														data-bs-target="#quickview_modal"><i
 															className="ri-eye-line"></i></a></li>
 												<li><a href="#" onClick={(e) => e.preventDefault()} data-tooltip title="Compare"
@@ -1379,7 +1863,7 @@ export default function Home() {
 										<div className="mn-options">
 											<ul>
 												<li><a href="#" onClick={(e) => e.preventDefault()} data-tooltip title="Quick View"
-														data-Link-action="quickview" data-bs-toggle="modal"
+														data-link-action="quickview" data-bs-toggle="modal"
 														data-bs-target="#quickview_modal"><i
 															className="ri-eye-line"></i></a></li>
 												<li><a href="#" onClick={(e) => e.preventDefault()} data-tooltip title="Compare"
@@ -1439,7 +1923,7 @@ export default function Home() {
 										<div className="mn-options">
 											<ul>
 												<li><a href="#" onClick={(e) => e.preventDefault()} data-tooltip title="Quick View"
-														data-Link-action="quickview" data-bs-toggle="modal"
+														data-link-action="quickview" data-bs-toggle="modal"
 														data-bs-target="#quickview_modal"><i
 															className="ri-eye-line"></i></a></li>
 												<li><a href="#" onClick={(e) => e.preventDefault()} data-tooltip title="Compare"
@@ -1495,7 +1979,7 @@ export default function Home() {
 										<div className="mn-options">
 											<ul>
 												<li><a href="#" onClick={(e) => e.preventDefault()} data-tooltip title="Quick View"
-														data-Link-action="quickview" data-bs-toggle="modal"
+														data-link-action="quickview" data-bs-toggle="modal"
 														data-bs-target="#quickview_modal"><i
 															className="ri-eye-line"></i></a></li>
 												<li><a href="#" onClick={(e) => e.preventDefault()} data-tooltip title="Compare"
@@ -1548,7 +2032,7 @@ export default function Home() {
 										<div className="mn-options">
 											<ul>
 												<li><a href="#" onClick={(e) => e.preventDefault()} data-tooltip title="Quick View"
-														data-Link-action="quickview" data-bs-toggle="modal"
+														data-link-action="quickview" data-bs-toggle="modal"
 														data-bs-target="#quickview_modal"><i
 															className="ri-eye-line"></i></a></li>
 												<li><a href="#" onClick={(e) => e.preventDefault()} data-tooltip title="Compare"
@@ -1777,7 +2261,7 @@ export default function Home() {
 						<h2 className="d-none">insta</h2>
 						<div className="mn-insta-wrapper">
 							<div className="mn-insta-outer">
-								<div className="insta-auto">
+								<div className="cat-auto">
 									{/* <!-- instagram item -1 --> */}
 									<div className="mn-insta-item">
 										<div className="mn-insta-inner">
@@ -1840,7 +2324,8 @@ export default function Home() {
 		</div>
       </main>
 
-      <Footer />
+      <Footer  />
+	
     </>
   );
 }

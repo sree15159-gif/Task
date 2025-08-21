@@ -70,7 +70,6 @@ const Orders = () => {
 
   return (
     <>
-      
       <main className="wrapper sb-default">
         {/* <div className="mn-main-content"> */}
           <div className="row">
@@ -84,7 +83,7 @@ const Orders = () => {
                       </div>
                       <div className="col-md-6 col-sm-12">
                         <ul className="mn-breadcrumb-list">
-                          <li className="mn-breadcrumb-item"><Link href="/">Home</Link></li>
+                          <li className="mn-breadcrumb-item"><Link href="/"><a>Home</a></Link></li>
                           <li className="mn-breadcrumb-item active">Orders</li>
                         </ul>
                       </div>
@@ -159,12 +158,10 @@ const Orders = () => {
                               </div>
 
                               <div className="order-actions">
-                                <Link href={`/track-order?id=${order.id}`} className="mn-btn-2 btn">
-                                  Track Order
-                                </Link>
-                                <Link href={`/order-details?id=${order.id}`} className="mn-btn-1 btn">
-                                  View Details
-                                </Link>
+                                <Link href={`/track-order?id=${order.id}`} className="mn-btn-2 btn"><a>Track Order
+                                                                  </a></Link>
+                                <Link href={`/order-details?id=${order.id}`} className="mn-btn-1 btn"><a>View Details
+                                                                  </a></Link>
                                 {order.status === 'Delivered' && (
                                   <button className="mn-btn-3 btn">
                                     Reorder
@@ -180,9 +177,8 @@ const Orders = () => {
                             <i className="ri-shopping-bag-line empty-icon"></i>
                             <h3>No orders yet</h3>
                             <p>Start shopping to see your orders here</p>
-                            <Link href="/shop-full-width" className="mn-btn-1 btn">
-                              Start Shopping
-                            </Link>
+                            <Link href="/shop-full-width" className="mn-btn-1 btn"><a>Start Shopping
+                                                          </a></Link>
                           </div>
                         </div>
                       )}
@@ -194,7 +190,6 @@ const Orders = () => {
           </div>
         {/* </div> */}
       </main>
-      
     </>
   );
 };

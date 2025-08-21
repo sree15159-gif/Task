@@ -165,10 +165,10 @@
         $('.mn-cart-notify').remove();
         if ($(this).hasClass("active")) {
             $(this).removeClass("active");
-            $('footer').after('<div class="mn-wish-notify"><p class="wish-note remove">Remove product on <a href="wishlist.html"> Wishlist</a> Successfully!</p></div>');
+            $('footer').after('<div class="mn-wish-notify"><p class="wish-note remove">Remove product on <a href="wishlist.html"> Wishlist Successfully!</p></div>');
         } else {
             $(this).addClass("active");
-            $('footer').after('<div class="mn-wish-notify"><p class="wish-note add">Add product in <a href="wishlist.html"> Wishlist</a> Successfully!</p></div>');
+            $('footer').after('<div class="mn-wish-notify"><p class="wish-note add">Add product in <a href="wishlist.html"> Wishlist Successfully!</p></div>');
         }
 
         setTimeout(function () {
@@ -193,10 +193,10 @@
         var iscartlist = $(this).hasClass("active");
         if (iscartlist) {
             $(this).removeClass("active");
-            $('footer').after('<div class="mn-cart-notify"><p class="compare-note remove">Remove product in <a href="cart.html"> Cart</a> Successfully!</p></div>');
+            $('footer').after('<div class="mn-cart-notify"><p class="compare-note remove">Remove product in <a href="cart.html"> Cart Successfully!</p></div>');
         } else {
             $(this).addClass("active");
-            $('footer').after('<div class="mn-cart-notify"><p class="compare-note add">Add product in <a href="cart.html"> Cart</a> Successfully!</p></div>');
+            $('footer').after('<div class="mn-cart-notify"><p class="compare-note add">Add product in <a href="cart.html"> Cart Successfully!</p></div>');
         }
         setTimeout(function () {
             $('.mn-cart-notify').fadeOut();
@@ -211,10 +211,10 @@
         var isCompare = $(this).hasClass("active");
         if (isCompare) {
             $(this).removeClass("active");
-            $('footer').after('<div class="mn-compare-notify"><p class="compare-note remove">Remove product on <a href="compare.html"> Compare list</a> Successfully!</p></div>');
+            $('footer').after('<div class="mn-compare-notify"><p class="compare-note remove">Remove product on <a href="compare.html"> Compare list Successfully!</p></div>');
         } else {
             $(this).addClass("active");
-            $('footer').after('<div class="mn-compare-notify"><p class="compare-note add">Add product in <a href="compare.html"> Compare list</a> Successfully!</p></div>');
+            $('footer').after('<div class="mn-compare-notify"><p class="compare-note add">Add product in <a href="compare.html"> Compare list Successfully!</p></div>');
         }
 
         setTimeout(function () {
@@ -631,7 +631,7 @@
 
     /*== Instagram slider & Category slider & Tooltips ==*/
     $(function () {
-        $('.insta-auto, .cat-auto').infiniteslide({
+        $('.cat-auto').infiniteslide({
             direction: 'left',
             speed: 50,
             clone: 10

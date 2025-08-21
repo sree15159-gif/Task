@@ -83,17 +83,17 @@ const BlogDetailRightSidebar = () => {
                 <div className="mn-sidebar-widget">
                   <h5>Recent Posts</h5>
                   <ul>
-                    <li><a href="#">Recent blog post 1</Link></li>
-                    <li><a href="#">Recent blog post 2</Link></li>
-                    <li><a href="#">Recent blog post 3</Link></li>
+                    <li><a href="#">Recent blog post 1</a></li>
+                    <li><a href="#">Recent blog post 2</a></li>
+                    <li><a href="#">Recent blog post 3</a></li>
                   </ul>
                 </div>
                 <div className="mn-sidebar-widget">
                   <h5>Categories</h5>
                   <ul>
-                    <li><a href="#">Fashion</Link></li>
-                    <li><a href="#">Lifestyle</Link></li>
-                    <li><a href="#">Shopping</Link></li>
+                    <li><a href="#">Fashion</a></li>
+                    <li><a href="#">Lifestyle</a></li>
+                    <li><a href="#">Shopping</a></li>
                   </ul>
                 </div>
               </div>

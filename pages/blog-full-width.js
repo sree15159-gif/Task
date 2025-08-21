@@ -59,21 +59,21 @@ const BlogFullWidth = () => {
                     <div className="mn-blog-post">
                       <h4>Sample Blog Post 1</h4>
                       <p>This is a sample blog post in full width layout.</p>
-                      <Link href="/blog-detail-full-width" className="read-more">Read More</Link>
+              <Link href="/blog-detail-full-width" className="read-more">Read More</Link>
                     </div>
                   </div>
                   <div className="col-lg-4 col-md-6">
                     <div className="mn-blog-post">
                       <h4>Sample Blog Post 2</h4>
                       <p>This is another sample blog post in full width layout.</p>
-                      <Link href="/blog-detail-full-width" className="read-more">Read More</Link>
+              <Link href="/blog-detail-full-width" className="read-more">Read More</Link>
                     </div>
                   </div>
                   <div className="col-lg-4 col-md-6">
                     <div className="mn-blog-post">
                       <h4>Sample Blog Post 3</h4>
                       <p>This is a third sample blog post in full width layout.</p>
-                      <Link href="/blog-detail-full-width" className="read-more">Read More</Link>
+              <Link href="/blog-detail-full-width" className="read-more">Read More</Link>
                     </div>
                   </div>
                 </div>

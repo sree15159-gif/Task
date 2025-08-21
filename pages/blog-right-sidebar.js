@@ -39,7 +39,7 @@ const BlogRightSidebar = () => {
               </div>
               <div className="col-md-6 col-sm-12">
                 <ul className="mn-breadcrumb-list">
-                  <li className="mn-breadcrumb-item"><Link href="/">Home</Link></li>
+                  <li className="mn-breadcrumb-item"><Link href="/"><a>Home</a></Link></li>
                   <li className="mn-breadcrumb-item active">Blog Right Sidebar</li>
                 </ul>
               </div>
@@ -57,12 +57,12 @@ const BlogRightSidebar = () => {
                 <div className="mn-blog-post">
                   <h4>Sample Blog Post 1</h4>
                   <p>This is a sample blog post. Blog content will be displayed here.</p>
-                  <Link href="/blog-detail-right-sidebar" className="read-more">Read More</Link>
+          <Link href="/blog-detail-right-sidebar" className="read-more"><a>Read More</a></Link>
                 </div>
                 <div className="mn-blog-post">
                   <h4>Sample Blog Post 2</h4>
                   <p>This is another sample blog post. Blog content will be displayed here.</p>
-                  <Link href="/blog-detail-right-sidebar" className="read-more">Read More</Link>
+          <Link  href="/blog-detail-right-sidebar" className="read-more"><a>Read More</a></Link>
                 </div>
               </div>
             </div>

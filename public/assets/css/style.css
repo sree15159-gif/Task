@@ -5044,7 +5044,7 @@ button.btn-close.qty_close {
 }
 
 .hero-title {
-  font-size: 4rem;
+  font-size: 3rem;
   font-weight: 300;
   line-height: 1.1;
   margin-bottom: 20px;
@@ -5068,24 +5068,26 @@ button.btn-close.qty_close {
 
 .hero-cta-btn {
   background: #007367;
-  color: white;
+  /* color: white;
   border: none;
-  padding: 15px 30px;
-  border-radius: 50px;
-  font-size: 16px;
+  padding: 15px 30px; */
+  border-radius: 10px;
+  /* font-size: 16px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
   display: inline-flex;
-  align-items: center;
-  gap: 10px;
+  align-items: center; */
+  /* gap: 10px; */
   box-shadow: 0 8px 20px rgba(0, 115, 103, 0.3);
+  gap: 80px;
 }
 
 .hero-cta-btn:hover {
-  background: #005a50;
+  background:#007367;
   transform: translateY(-2px);
-  box-shadow: 0 12px 25px rgba(0, 115, 103, 0.4);
+  box-shadow: 0 10px 25px rgba(0, 115, 103, 0.4);
+  border-radius: 10px;
 }
 
 /* Categories Section within Right Section */
@@ -5183,6 +5185,7 @@ button.btn-close.qty_close {
 
 /* Category Cards */
 .category-card {
+  height: 169px;
   min-width: 140px;
   padding: 15px;
   border-radius: 12px;
@@ -5216,7 +5219,8 @@ button.btn-close.qty_close {
 }
 
 .category-name {
-  font-size: 1.1rem;
+  padding-top: 30px;
+  font-size: 0.92rem;
   font-weight: 600;
   color: #333;
   margin-bottom: 5px;
@@ -10893,7 +10897,7 @@ header {
   border: 1px solid #007367;
   border-radius: 30px;
   position: relative;
-  background-color: #ffd783;
+  background-color: #cbfadc;
 }
 .mn-header .mn-toggle-sidebar .outer-ring .inner-ring {
   -webkit-transition: all 0.3s ease-in-out;
@@ -11331,7 +11335,7 @@ header {
   margin: -15px 0;
 }
 .mn-sidebar .mn-sidebar-body .mn-sb-list .mn-sb-item .mn-drop-toggle {
-  padding: 15px 0;
+  padding: 15px 20px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -11417,7 +11421,7 @@ header {
 .mn-sidebar .mn-sidebar-body .mn-sb-list .mn-sb-title {
   padding: 12px 0;
   text-transform: uppercase;
-  color: #505d74;
+  color: #12b9a7;
   font-size: 13px;
   font-weight: 600;
   position: relative;
@@ -13377,7 +13381,7 @@ button.btn-close.qty_close {
   left: 0;
 }
 .mn-cat .mn-cat-card h3 {
-  font-size: 25px;
+  font-size: 20px;
   font-weight: 700;
   color: #007367;
   text-transform: capitalize;
@@ -13385,8 +13389,9 @@ button.btn-close.qty_close {
   z-index: 2;
 }
 .mn-cat .mn-cat-card h4 {
+  padding-left: 15px;
   margin: 0;
-  font-size: 18px;
+  font-size: 12px;
   font-weight: 700;
   color: #007367;
   text-transform: capitalize;
@@ -19619,5 +19624,42 @@ ul.gi li {
   }
   .mn-wishlist-page .mn-vendor-card-header {
     padding: 15px;
+  }
+}
+
+.location-badge {
+  color: #222;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: middle;
+  border: 2px solid #007896;
+  border-radius: 30px;
+  padding: 0.4em 1em;
+  font-size: clamp(12px, 1.5vw, 15px);
+  max-width: 40vw;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  background-color: #fff;
+  margin-bottom: 11px;
+  margin-top: 14px;
+  margin-left: 33px;
+}
+
+/* Mobile tweaks */
+@media (max-width: 600px) {
+  .location-badge {
+    max-width: 60vw; /* Allow more room on small screens */
+    font-size: 13px;
+    padding: 0.35em 0.8em;
+  }
+}
+
+/* Tablet tweaks */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .location-badge {
+    max-width: 50vw;
+    font-size: 14px;
   }
 }

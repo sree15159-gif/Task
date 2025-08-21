@@ -1,0 +1,466 @@
+/* Vendor Styles */
+
+/* Vendor List Page */
+.vendor-list-page {
+  min-height: 100vh;
+}
+
+.vendor-header-stats {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 2rem 0;
+  margin-bottom: 2rem;
+}
+
+.vendor-header-stats h1 {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.vendor-header-stats p {
+  opacity: 0.9;
+}
+
+/* Vendor Card */
+.vendor-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.vendor-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15) !important;
+}
+
+.vendor-card .card {
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.vendor-card .card-img-top {
+  transition: transform 0.3s ease;
+}
+
+.vendor-card:hover .card-img-top {
+  transform: scale(1.05);
+}
+
+.vendor-card .badge {
+  font-size: 0.75rem;
+  padding: 0.4rem 0.8rem;
+}
+
+.vendor-card .btn {
+  border-radius: 25px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.vendor-card .btn:hover {
+  transform: translateY(-2px);
+}
+
+/* Vendor Sidebar */
+.vendor-sidebar .card {
+  border-radius: 15px;
+  position: sticky;
+  top: 2rem;
+}
+
+.vendor-sidebar .card-header {
+  border-radius: 15px 15px 0 0 !important;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  color: white;
+  border: none !important;
+}
+
+.vendor-sidebar .filter-section {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 1rem;
+}
+
+.vendor-sidebar .filter-section:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.vendor-sidebar .form-check-input:checked {
+  background-color: #667eea;
+  border-color: #667eea;
+}
+
+.vendor-sidebar .form-select:focus,
+.vendor-sidebar .form-control:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+}
+
+/* Vendor Section Headers */
+.vendor-section h4 {
+  font-weight: 700;
+  color: #2d3748;
+}
+
+.vendor-section .badge {
+  font-size: 0.8rem;
+  padding: 0.4rem 0.8rem;
+}
+
+/* Quick Stats Cards */
+.vendor-list-page .card {
+  border-radius: 15px;
+  transition: transform 0.3s ease;
+}
+
+.vendor-list-page .card:hover {
+  transform: translateY(-3px);
+}
+
+/* Vendor Detail Page */
+.vendor-detail-page {
+  min-height: 100vh;
+}
+
+.vendor-header {
+  position: relative;
+  overflow: hidden;
+}
+
+.vendor-cover {
+  position: relative;
+}
+
+.vendor-cover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(0,0,0,0.6), rgba(0,0,0,0.3));
+  z-index: 1;
+}
+
+.vendor-header .container {
+  position: relative;
+  z-index: 2;
+}
+
+.vendor-header img {
+  border: 4px solid white;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.vendor-header .badge {
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+}
+
+.vendor-header .breadcrumb {
+  background: none;
+  padding: 0;
+  margin: 0;
+}
+
+.vendor-header .breadcrumb-item + .breadcrumb-item::before {
+  color: rgba(255,255,255,0.7);
+}
+
+/* Vendor Info Bar */
+.vendor-detail-page .bg-light {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%) !important;
+}
+
+/* Product Cards in Vendor Detail */
+.vendor-detail-page .card {
+  border-radius: 15px;
+  transition: all 0.3s ease;
+  border: none;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.vendor-detail-page .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.vendor-detail-page .card-img-top {
+  border-radius: 15px 15px 0 0;
+  transition: transform 0.3s ease;
+}
+
+.vendor-detail-page .card:hover .card-img-top {
+  transform: scale(1.05);
+}
+
+.vendor-detail-page .btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  border-radius: 25px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.vendor-detail-page .btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.vendor-detail-page .btn-outline-light {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  background: rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+.vendor-detail-page .btn-danger {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Search and Filter Bar */
+.vendor-detail-page .form-control,
+.vendor-detail-page .form-select {
+  border-radius: 25px;
+  border: 2px solid #e2e8f0;
+  transition: all 0.3s ease;
+}
+
+.vendor-detail-page .form-control:focus,
+.vendor-detail-page .form-select:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+}
+
+/* Category Tags */
+.vendor-detail-page .badge.bg-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  border-radius: 15px;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+}
+
+/* Rating Stars */
+.vendor-detail-page .ri-star-fill {
+  color: #fbbf24;
+}
+
+.vendor-detail-page .ri-star-line {
+  color: #d1d5db;
+}
+
+/* Price Display */
+.vendor-detail-page .h5.text-primary {
+  color: #667eea !important;
+  font-weight: 700;
+}
+
+.vendor-detail-page .text-decoration-line-through {
+  color: #9ca3af !important;
+}
+
+/* Discount Badge */
+.vendor-detail-page .badge.bg-danger {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important;
+  border-radius: 15px;
+  font-weight: 600;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Loading States */
+.spinner-border {
+  width: 3rem;
+  height: 3rem;
+}
+
+/* Empty States */
+.vendor-list-page .ri-store-line,
+.vendor-detail-page .ri-search-line {
+  font-size: 4rem;
+  color: #d1d5db;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .vendor-header-stats {
+    padding: 1.5rem 0;
+  }
+  
+  .vendor-header {
+    height: 250px !important;
+  }
+  
+  .vendor-header img {
+    width: 80px !important;
+    height: 80px !important;
+  }
+  
+  .vendor-detail-page .d-flex.align-items-center {
+    flex-direction: column;
+    align-items: flex-start !important;
+  }
+  
+  .vendor-detail-page .form-control,
+  .vendor-detail-page .form-select {
+    width: 100% !important;
+    margin-bottom: 1rem;
+  }
+  
+  .vendor-card .card-body {
+    padding: 1rem;
+  }
+  
+  .vendor-sidebar {
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .vendor-header {
+    height: 200px !important;
+  }
+  
+  .vendor-header .d-flex {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .vendor-header img {
+    margin-bottom: 1rem;
+    margin-right: 0 !important;
+  }
+  
+  .vendor-detail-page .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* Animation Classes */
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-up {
+  animation: slideUp 0.6s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hover Effects */
+.vendor-card .position-absolute.top-0.end-0 {
+  transition: all 0.3s ease;
+  opacity: 0;
+}
+
+.vendor-card:hover .position-absolute.top-0.end-0 {
+  opacity: 1;
+}
+
+.vendor-detail-page .position-absolute.top-0.end-0 {
+  transition: all 0.3s ease;
+}
+
+.vendor-detail-page .card:hover .position-absolute.top-0.end-0 {
+  transform: scale(1.1);
+}
+
+/* Status Indicators */
+.badge.bg-success {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+}
+
+.badge.bg-danger {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important;
+}
+
+.badge.bg-info {
+  background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%) !important;
+}
+
+/* Custom Scrollbar */
+.vendor-sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.vendor-sidebar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.vendor-sidebar::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 10px;
+}
+
+.vendor-sidebar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+}
+
+/* Focus States */
+.vendor-card:focus-within {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.vendor-detail-page .card:focus-within {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+/* Print Styles */
+@media print {
+  .vendor-sidebar,
+  .btn,
+  .badge {
+    display: none !important;
+  }
+  
+  .vendor-card,
+  .vendor-detail-page .card {
+    box-shadow: none !important;
+    border: 1px solid #ddd !important;
+  }
+}

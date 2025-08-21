@@ -59,7 +59,6 @@ const Wishlist = () => {
           <span className="shape"></span>
         </div>
       </div>
-
       {/* Sidebar */}
       <div className="mn-sidebar-overlay"></div>
       <div className="mn-sidebar">
@@ -94,15 +93,19 @@ const Wishlist = () => {
               </ul>
             </li>
             <li className="mn-sb-item sb-drop-item">
-              <Link href="/shop-right-sidebar" className="mn-drop-toggle">
-                <img src="/assets/img/icons/shoes.svg" alt="clothes" />
-                <span className="condense">Shoes</span>
+              <Link href="/shop-right-sidebar" className="mn-drop-toggle" legacyBehavior>
+                <a>
+                  <img src="/assets/img/icons/shoes.svg" alt="clothes" />
+                  <span className="condense">Shoes</span>
+                </a>
               </Link>
             </li>
             <li className="mn-sb-item sb-drop-item">
-              <Link href="/shop-right-sidebar" className="mn-drop-toggle">
-                <img src="/assets/img/icons/glasses.svg" alt="glasses" />
-                <span className="condense">glasses</span>
+              <Link href="/shop-right-sidebar" className="mn-drop-toggle" legacyBehavior>
+                <a>
+                  <img src="/assets/img/icons/glasses.svg" alt="glasses" />
+                  <span className="condense">glasses</span>
+                </a>
               </Link>
             </li>
             <li className="mn-sb-item sb-drop-item">
@@ -123,9 +126,11 @@ const Wishlist = () => {
               </ul>
             </li>
             <li className="mn-sb-item sb-drop-item">
-              <Link href="/shop-right-sidebar" className="mn-drop-toggle">
-                <img src="/assets/img/icons/hat.svg" alt="hat" />
-                <span className="condense">Hat</span>
+              <Link href="/shop-right-sidebar" className="mn-drop-toggle" legacyBehavior>
+                <a>
+                  <img src="/assets/img/icons/hat.svg" alt="hat" />
+                  <span className="condense">Hat</span>
+                </a>
               </Link>
             </li>
             <li className="mn-sb-item sb-drop-item">
@@ -190,9 +195,11 @@ const Wishlist = () => {
               </ul>
             </li>
             <li className="mn-sb-item sb-drop-item">
-              <Link href="/shop-right-sidebar" className="mn-drop-toggle">
-                <img src="/assets/img/icons/bread.svg" alt="Bread" />
-                <span className="condense">Bread</span>
+              <Link href="/shop-right-sidebar" className="mn-drop-toggle" legacyBehavior>
+                <a>
+                  <img src="/assets/img/icons/bread.svg" alt="Bread" />
+                  <span className="condense">Bread</span>
+                </a>
               </Link>
             </li>
             <li className="mn-sb-title condense"><span>Vegetables</span></li>
@@ -214,46 +221,57 @@ const Wishlist = () => {
               </ul>
             </li>
             <li className="mn-sb-item sb-drop-item">
-              <Link href="/shop-right-sidebar" className="mn-drop-toggle">
-                <img src="/assets/img/icons/tomato.svg" alt="tomato" />
-                <span className="condense">Tomato</span>
+              <Link href="/shop-right-sidebar" className="mn-drop-toggle" legacyBehavior>
+                <a>
+                  <img src="/assets/img/icons/tomato.svg" alt="tomato" />
+                  <span className="condense">Tomato</span>
+                </a>
               </Link>
             </li>
             <li className="mn-sb-item sb-drop-item">
-              <Link href="/shop-right-sidebar" className="mn-drop-toggle">
-                <img src="/assets/img/icons/lemon.svg" alt="lemon" />
-                <span className="condense">Lemon</span>
+              <Link href="/shop-right-sidebar" className="mn-drop-toggle" legacyBehavior>
+                <a>
+                  <img src="/assets/img/icons/lemon.svg" alt="lemon" />
+                  <span className="condense">Lemon</span>
+                </a>
               </Link>
             </li>
             <li className="mn-sb-title condense"><span>Fruits</span></li>
             <li className="mn-sb-item sb-drop-item">
-              <Link href="/shop-right-sidebar" className="mn-drop-toggle">
-                <img src="/assets/img/icons/avocado.svg" alt="avocado" />
-                <span className="condense">avocado</span>
+              <Link href="/shop-right-sidebar" className="mn-drop-toggle" legacyBehavior>
+                <a>
+                  <img src="/assets/img/icons/avocado.svg" alt="avocado" />
+                  <span className="condense">avocado</span>
+                </a>
               </Link>
             </li>
             <li className="mn-sb-item sb-drop-item">
-              <Link href="/shop-right-sidebar" className="mn-drop-toggle">
-                <img src="/assets/img/icons/strawberry.svg" alt="strawberry" />
-                <span className="condense">strawberry</span>
+              <Link href="/shop-right-sidebar" className="mn-drop-toggle" legacyBehavior>
+                <a>
+                  <img src="/assets/img/icons/strawberry.svg" alt="strawberry" />
+                  <span className="condense">strawberry</span>
+                </a>
               </Link>
             </li>
             <li className="mn-sb-item sb-drop-item">
-              <Link href="/shop-right-sidebar" className="mn-drop-toggle">
-                <img src="/assets/img/icons/cherry.svg" alt="cherry" />
-                <span className="condense">cherry</span>
+              <Link href="/shop-right-sidebar" className="mn-drop-toggle" legacyBehavior>
+                <a>
+                  <img src="/assets/img/icons/cherry.svg" alt="cherry" />
+                  <span className="condense">cherry</span>
+                </a>
               </Link>
             </li>
             <li className="mn-sb-item sb-drop-item">
-              <Link href="/shop-right-sidebar" className="mn-drop-toggle">
-                <img src="/assets/img/icons/lychee.svg" alt="Lychee" />
-                <span className="condense">Lychee</span>
+              <Link href="/shop-right-sidebar" className="mn-drop-toggle" legacyBehavior>
+                <a>
+                  <img src="/assets/img/icons/lychee.svg" alt="Lychee" />
+                  <span className="condense">Lychee</span>
+                </a>
               </Link>
             </li>
           </ul>
         </div>
       </div>
-
       <div className="mn-breadcrumb m-b-30">
         <div className="row">
           <div className="col-12">
@@ -273,7 +291,6 @@ const Wishlist = () => {
           </div>
         </div>
       </div>
-
       {/* Wishlist section */}
       <section className="mn-wishlist-page p-b-15">
         <div className="mn-title d-none">
@@ -286,8 +303,8 @@ const Wishlist = () => {
               <div className="mn-vendor-card-header">
                 <h5>Wishlist</h5>
                 <div className="mn-header-btn">
-                  <Link className="mn-btn-2" href="/shop-full-width">
-                    <span>Shop Now</span>
+                  <Link className="mn-btn-2" href="/shop-full-width" legacyBehavior>
+                    <a><span>Shop Now</span></a>
                   </Link>
                 </div>
               </div>
@@ -309,9 +326,11 @@ const Wishlist = () => {
                         <tr key={index} className="pro-gl-content">
                           <td><span>{item.id}</span></td>
                           <td data-label="Product" className="mn-cart-pro-name">
-                            <Link href="/product-detail" className="mn-item">
-                              <img className="prod-img" src={item.image} alt="product image" />
-                              {item.name}
+                            <Link href="/product-detail" className="mn-item" legacyBehavior>
+                              <a>
+                                <img className="prod-img" src={item.image} alt="product image" />
+                                {item.name}
+                              </a>
                             </Link>
                           </td>
                           <td><span>{item.date}</span></td>

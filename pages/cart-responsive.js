@@ -506,14 +506,13 @@ const Cart = () => {
           }
         }
       `}</style>
-
       <div className="cart-container">
         {/* Breadcrumb */}
         <div className="breadcrumb-section">
           <div className="breadcrumb-content">
             <h1 className="page-title">Cart Page</h1>
             <div className="breadcrumb-nav">
-              <Link href="/">Home</Link> → Cart Page
+              <Link href="/" legacyBehavior>Home</Link> → Cart Page
             </div>
           </div>
         </div>
@@ -526,7 +525,7 @@ const Cart = () => {
               <div className="empty-cart">
                 <h3>Your cart is empty</h3>
                 <p>Add some products to your cart to see them here</p>
-                <Link href="/" className="continue-shopping">Continue Shopping</Link>
+                <Link href="/" className="continue-shopping" legacyBehavior>Continue Shopping</Link>
               </div>
             ) : (
               <div className="cart-table">
@@ -599,10 +598,10 @@ const Cart = () => {
 
                 {/* Cart Actions */}
                 <div className="cart-actions">
-                  <Link href="/" className="continue-shopping">
+                  <Link href="/" className="continue-shopping" legacyBehavior>
                     ← Continue Shopping
                   </Link>
-                  <Link href="/checkout" className="checkout-btn">
+                  <Link href="/checkout" className="checkout-btn" legacyBehavior>
                     Proceed to Checkout
                   </Link>
                 </div>
@@ -695,7 +694,6 @@ const Cart = () => {
           )}
         </div>
       </div>
-
       <style jsx>{`
         @media (max-width: 768px) {
           .cart-item .mobile-row {
